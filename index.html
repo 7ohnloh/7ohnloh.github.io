@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>John Loh Portfolio</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="description" content="John Loh designs products people actually use: product design and rapid prototyping. Design & AI at SUTD.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600&family=JetBrains+Mono:wght@400;500&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="shell">
+
+  <aside class="rail" aria-label="About John and site navigation">
+    <p class="rail-name"><strong>John Loh</strong><span>Design &amp; AI · SUTD</span></p>
+    <h1 class="rail-lede">I design products people <em>actually use.</em></h1>
+    <p class="rail-intro">Product design and rapid prototyping: understanding what people need, testing ideas early, and turning them into something real.</p>
+    <nav class="toc" aria-label="Sections">
+      <a href="#work">Work <span class="mono">05</span></a>
+      <a href="#experience">Experience <span class="mono">04</span></a>
+      <a href="#kind-words">Kind words</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="links">
+      <a href="resume.pdf">Résumé</a>
+      <a href="https://www.linkedin.com/in/john-loh-892a8318b/">LinkedIn</a>
+      <a href="https://github.com/7ohnloh">GitHub</a>
+    </div>
+  </aside>
+
+  <main class="bench">
+
+    <section id="work" aria-labelledby="work-title">
+      <div class="section-head">
+        <h2 id="work-title">Selected work</h2>
+      </div>
+
+      <div class="projects">
+
+        <article class="project">
+          <a class="project-link" href="work/grantpal/index.html">
+            <div class="cover"><img src="images/grantpal/hero-trackerpal.jpg" alt="GrantPal's TrackerPal dashboard: grant cards grouped by project with status tags, a to-do list and a calendar" loading="lazy"></div>
+            <div class="project-meta"><span class="chip">Client</span><span class="mono">BeingBridges · May – Aug 2025</span></div>
+            <h3>GrantPal</h3>
+            <p class="project-summary">An AI assistant that helps a two-person social enterprise spend less time on grant admin.</p>
+          </a>
+          <dl class="spec">
+            <dt>Role</dt><dd>Tech lead · backend, AI modules and React frontend</dd>
+            <dt>Built with</dt><dd>React, Flask, OpenAI API, Google Calendar API</dd>
+          </dl>
+          <a class="cta" href="work/grantpal/index.html">Read the case study →</a>
+        </article>
+
+        <article class="project">
+          <a class="project-link" href="work/pour/index.html">
+          <div class="cover cover--shot"><img src="images/pour/hero-plugin-overview.jpg" alt="POUR plugin screens: choosing WCAG and DSS rule packs, an issue detail with a suggested fix, and developer annotations" loading="lazy"></div>
+          <div class="project-meta"><span class="chip">Design challenge</span><span class="mono">GovTech Singapore · Aug – Oct 2026</span></div>
+          <h3>POUR</h3>
+          <p class="project-summary">A Figma plugin that checks designs against WCAG 2.2 AA and turns each issue into a note developers can act on.</p>
+          </a>
+          <dl class="spec">
+            <dt>Role</dt><dd>User research, pitch, and contributions to the plugin code</dd>
+            <dt>Built with</dt><dd>Figma Plugin API, SGDS web components, JavaScript</dd>
+          </dl>
+          <a class="cta" href="work/pour/index.html">Read the case study →</a>
+        </article>
+
+        <article class="project">
+          <a class="project-link" href="work/nomquest/index.html">
+          <div class="cover cover--phones">
+            <img src="images/nomquest/screen-explore.webp" alt="NomQuest explore page with meal inspiration posts" loading="lazy">
+            <img src="images/nomquest/screen-fnb.webp" alt="NomQuest restaurant page filtered by dietary goals" loading="lazy">
+            <img src="images/nomquest/screen-profile.webp" alt="NomQuest profile with dietary goals and a food journal" loading="lazy">
+          </div>
+          <div class="project-meta"><span class="chip chip--plain">School</span><span class="mono">HCI and AI · Jun – Aug 2025</span></div>
+          <h3>NomQuest</h3>
+          <p class="project-summary">A social eating app for busy working adults, shaped by interviews and three rounds of testing with 69 people in total.</p>
+          </a>
+          <dl class="spec">
+            <dt>Role</dt><dd>Research, prototyping and testing, team of five</dd>
+            <dt>Built with</dt><dd>Figma, Maze, paper prototypes</dd>
+          </dl>
+          <a class="cta" href="work/nomquest/index.html">Read the case study →</a>
+        </article>
+
+        <article class="project">
+          <a class="project-link" href="work/prodinsight/index.html">
+          <div class="cover cover--chart" role="img" aria-label="Bar chart: AirPods Max sentiment against the Sony and Sennheiser average for five features. Gaps: microphone 0.34, fit 0.28, build 0.26, latency 0.25, comfort 0.21.">
+            <p class="chart-title">Where AirPods Max trails · average sentiment, 0 to 1</p>
+            <div class="chart-rows">
+              <div class="chart-row"><span class="label">Microphone</span><span class="bars"><span class="bar bar--them" style="width:67%"></span><span class="bar bar--us" style="width:33%"></span></span><span class="gap">−0.34</span></div>
+              <div class="chart-row"><span class="label">Fit</span><span class="bars"><span class="bar bar--them" style="width:85%"></span><span class="bar bar--us" style="width:57%"></span></span><span class="gap">−0.28</span></div>
+              <div class="chart-row"><span class="label">Build</span><span class="bars"><span class="bar bar--them" style="width:79%"></span><span class="bar bar--us" style="width:53%"></span></span><span class="gap">−0.26</span></div>
+              <div class="chart-row"><span class="label">Latency</span><span class="bars"><span class="bar bar--them" style="width:41%"></span><span class="bar bar--us" style="width:16%"></span></span><span class="gap">−0.25</span></div>
+              <div class="chart-row"><span class="label">Comfort</span><span class="bars"><span class="bar bar--them" style="width:76%"></span><span class="bar bar--us" style="width:56%"></span></span><span class="gap">−0.21</span></div>
+            </div>
+            <div class="legend"><span><i style="background:var(--sage)"></i>AirPods Max</span><span><i style="background:var(--bar-muted)"></i>Sony + Sennheiser average</span></div>
+          </div>
+          <div class="project-meta"><span class="chip chip--plain">School</span><span class="mono">AI Applications in Design · Apr – May 2025</span></div>
+          <h3>ProdInsight</h3>
+          <p class="project-summary">Mining YouTube and Reddit comments to find where a premium product falls behind its rivals.</p>
+          </a>
+          <dl class="spec">
+            <dt>Role</dt><dd>Data collection: YouTube and Reddit scrapers</dd>
+            <dt>Built with</dt><dd>Python, PRAW, TextBlob, FAISS, sentence-transformers</dd>
+          </dl>
+          <a class="cta" href="work/prodinsight/index.html">Read the write-up →</a>
+        </article>
+
+        <article class="project">
+          <a class="project-link" href="work/kebunfresh/index.html">
+          <div class="cover cover--shot"><img src="images/kebunfresh/app-homepage-live.jpg" alt="KebunFresh web app: set your location, search produce and browse nearby farms with ratings and harvest dates" loading="lazy"></div>
+          <div class="project-meta"><span class="chip chip--plain">School · overseas</span><span class="mono">SUTD × Petra Christian University · Jan 2025</span></div>
+          <h3>KebunFresh</h3>
+          <p class="project-summary">A marketplace that connects households in Surabaya with nearby farms, built after a site visit to Gunung Anyar.</p>
+          </a>
+          <dl class="spec">
+            <dt>Role</dt><dd>Product management and frontend</dd>
+            <dt>Built with</dt><dd>Streamlit, PySpark ALS recommender</dd>
+          </dl>
+          <a class="cta" href="work/kebunfresh/index.html">Read the write-up →</a>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="experience" aria-labelledby="exp-title">
+      <div class="section-head">
+        <h2 id="exp-title">Experience</h2>
+        <span class="eyebrow">Internships and roles</span>
+      </div>
+      <ol class="timeline">
+        <li>
+          <span class="when">Jun – Sep 2026</span>
+          <div>
+            <h3>Software Engineer Intern</h3>
+            <p class="where">22 Media · Mobile App Tech Team</p>
+            <p class="what">Turned Figma designs into React Native components and interactive prototypes, and wrote the component guidelines and naming conventions the team used to keep design and code in sync.</p>
+          </div>
+        </li>
+        <li>
+          <span class="when">Sep – Dec 2025</span>
+          <div>
+            <h3>Project Management Intern</h3>
+            <p class="where">Hegen · Strategy and Transformation</p>
+            <p class="what">Started and delivered an AI-powered internal translation tool, and supported the company website redesign and an LMS rollout.</p>
+          </div>
+        </li>
+        <li>
+          <span class="when">May – Aug 2025</span>
+          <div>
+            <h3>Advanced Design Mentor</h3>
+            <p class="where">SUTD · STEAMunity Programme</p>
+            <p class="what">Coached student teams from problem exploration to working prototype over four months, including an AWS-sponsored challenge.</p>
+          </div>
+        </li>
+        <li>
+          <span class="when">Sep 2020 – Feb 2021</span>
+          <div>
+            <h3>Full Stack Engineer Intern</h3>
+            <p class="where">RSM Stone Forest · Management Information Systems</p>
+            <p class="what">Built a full-stack onboarding platform prototype on my own and automated billing reports for the audit team.</p>
+          </div>
+        </li>
+      </ol>
+      <div class="edu">
+        <p><strong>Singapore University of Technology and Design</strong> · B.Sc. Design &amp; Artificial Intelligence, minor in Computer Science · 2023 – 2027 · exchange at Dankook University, Korea</p>
+        <p><strong>Nanyang Polytechnic</strong> · Diploma in Business Informatics · 2018 – 2021</p>
+      </div>
+    </section>
+
+    <section id="kind-words" aria-labelledby="kw-title">
+      <div class="section-head">
+        <h2 id="kw-title">Kind words</h2>
+        <span class="eyebrow">From supervisors</span>
+      </div>
+      <div class="quotes">
+        <figure class="quote">
+          <blockquote><p>“Supported our design team by turning Figma visual models into functional, interactive prototypes.”</p></blockquote>
+          <figcaption><strong>Daniel Tsou</strong>Software Engineering Lead, 22 Media · 2026</figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote><p>“An eagerness to take on responsibilities beyond the typical scope of an intern.”</p></blockquote>
+          <figcaption><strong>Hans Chan</strong>Strategy and Transformation, Hegen · 2025</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-title">
+      <div class="section-head">
+        <h2 id="about-title">About</h2>
+      </div>
+      <div class="about">
+        <div class="about-text">
+          <p>Hi, I'm John. I'm in my final year of Design and Artificial Intelligence at SUTD, graduating in April 2027. Before that I did a diploma in Business Informatics at Nanyang Polytechnic, so I come to products from three sides: technology, business and design.</p>
+          <p>Across internships in software development, product development, project management and digital transformation, I've built and prototyped digital products, helped shape product and design decisions, and worked between technical and business teams to take ideas from concept to implementation. I use AI tools like Claude Code to get from an idea to a working prototype quickly, so the team can test it with real people sooner.</p>
+          <p>Away from the screen I play piano (Grade 8), climb with the SUTD Mountaineering Club, and help lead the youth group at my church.</p>
+        </div>
+        <div class="facts">
+          <div>
+            <h3>Leadership</h3>
+            <ul>
+              <li>Welfare Director, DAI programme</li>
+              <li>Outreach Director, SUTD Mountaineering Club</li>
+              <li>Hostel Warden, SUTD</li>
+              <li>Detachment commander, 10 C4I Battalion (NS)</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Languages</h3>
+            <ul><li>English and Mandarin</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Let's talk</h2>
+      <div class="contact-row">
+        <span class="email">johnloh1010@gmail.com</span>
+        <button class="copy" type="button" id="copy-email">Copy email</button>
+      </div>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/john-loh-892a8318b/">LinkedIn</a>
+        <a href="https://github.com/7ohnloh">GitHub</a>
+        <a href="resume.pdf">Résumé (PDF)</a>
+      </div>
+    </section>
+
+    <p class="footer">© <span data-year>2026</span> John Loh · Plain HTML, CSS and JavaScript · Full references on request</p>
+  </main>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>

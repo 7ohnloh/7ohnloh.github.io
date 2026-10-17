@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>POUR · John Loh</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<meta name="description" content="POUR case study: a Figma plugin that checks designs for accessibility, built for GovTech Singapore's Inclusive Design Challenge.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600&family=JetBrains+Mono:wght@400;500&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<div class="shell">
+
+  <aside class="rail" aria-label="Project facts">
+    <a class="back" href="../../index.html#work">← All work</a>
+    <div class="project-meta"><span class="chip">Design challenge</span><span class="mono">Aug – Oct 2026</span></div>
+    <h1 class="cs-title">POUR</h1>
+    <p class="cs-summary">A Figma plugin that catches accessibility issues while a design is still a design, and tells developers exactly what to build.</p>
+    <dl class="spec">
+      <dt>For</dt><dd>GovTech Singapore, Inclusive Design Challenge</dd>
+      <dt>My role</dt><dd>Research, pitch, contributions to the plugin code</dd>
+      <dt>Team</dt><dd>5 designers</dd>
+      <dt>Timeline</dt><dd>Aug – Oct 2026</dd>
+      <dt>Standards</dt><dd>WCAG 2.2 AA, Digital Service Standards, SGDS</dd>
+      <dt>Built with</dt><dd>Figma Plugin API, JavaScript, SGDS web components</dd>
+    </dl>
+    <div class="links">
+      <a href="https://github.com/xinensleeping/dai_girlies_idc">Code</a>
+      <a href="https://lnkd.in/p/gNmiYivu">Showcase post</a>
+    </div>
+  </aside>
+
+  <main class="cs-body">
+
+    <figure class="shot">
+      <img src="../../images/pour/hero-plugin-overview.jpg" alt="POUR in three panels: choosing WCAG and DSS rule packs, an issue with its suggested fix and developer note, and developer annotations on the canvas">
+      <figcaption>Choose the rules, review each issue, then hand off annotations developers can act on.</figcaption>
+    </figure>
+
+    <section class="cs-section" aria-labelledby="problem">
+      <p class="eyebrow">The problem</p>
+      <h2 id="problem">Accessibility gets fixed after the fact</h2>
+      <p>Government digital services in Singapore are built on shared design systems. When a core component leaves out something a screen reader user or a keyboard user needs, every team that uses it inherits the gap, and each one ends up solving it on its own.</p>
+      <p class="hmw">Design systems spread accessibility barriers at scale when cross-disability patterns aren't built into their core components.</p>
+      <div class="loop" aria-label="The current workflow, which loops">
+        <p class="eyebrow">Today's workflow</p>
+        <ol class="loop-steps">
+          <li>Design system designers create or update components</li>
+          <li>Engineers code the design system</li>
+          <li>Product designers build screens but can't tell if they're accessible</li>
+          <li>They report the problems back</li>
+          <li>Design system designers fix the components, and the cycle starts again</li>
+        </ol>
+        <p class="loop-note">↻ Every fix happens after something has already shipped.</p>
+      </div>
+    </section>
+
+    <section class="cs-section" aria-labelledby="research">
+      <p class="eyebrow">Research</p>
+      <h2 id="research">Designers care. Their tools don't help.</h2>
+      <p>We read through WCAG, the Digital Service Standards and GovTech's Oobee scanner, interviewed 4 design system designers at GovTech, and surveyed 10 more designers across the organisation.</p>
+      <div class="stats">
+        <div class="stat"><b>90%</b><span>consider accessibility always or often when they design</span></div>
+        <div class="stat"><b>62.5%</b><span>work with SGDS, the government's design system</span></div>
+        <div class="stat"><b>4%</b><span>said a checklist would be the most useful kind of guidance</span></div>
+      </div>
+      <ul>
+        <li><strong>Guidelines say what, not how.</strong> WCAG and DSS set requirements but don't show what an accessible component looks like day to day.</li>
+        <li><strong>Design systems leave edge cases open.</strong> Designers often had to look things up or ask a developer when the system didn't cover a case.</li>
+        <li><strong>People want patterns, not checklists.</strong> They asked for interaction patterns and component rules far more than a list to tick off.</li>
+      </ul>
+      <div class="hchart" role="img" aria-label="Survey: most useful accessibility guidance. Alternative interaction patterns 24%, when to use or avoid a component 20%, requirements per component 16%, do's and don'ts 16%, examples of accessible use 16%, accessibility checklist 4%.">
+        <p class="chart-title">Most useful accessibility guidance in a design system · share of answers</p>
+        <div class="chart-rows">
+          <div class="chart-row top"><span class="label">Alternative interaction patterns</span><span class="bars"><span class="bar bar--us" style="width:80%"></span></span><span class="gap">24%</span></div>
+          <div class="chart-row top"><span class="label">When to use or avoid a component</span><span class="bars"><span class="bar bar--us" style="width:66.7%"></span></span><span class="gap">20%</span></div>
+          <div class="chart-row"><span class="label">Requirements per component</span><span class="bars"><span class="bar bar--them" style="width:53.3%"></span></span><span class="gap">16%</span></div>
+          <div class="chart-row"><span class="label">Do's and don'ts</span><span class="bars"><span class="bar bar--them" style="width:53.3%"></span></span><span class="gap">16%</span></div>
+          <div class="chart-row"><span class="label">Examples of accessible use</span><span class="bars"><span class="bar bar--them" style="width:53.3%"></span></span><span class="gap">16%</span></div>
+          <div class="chart-row"><span class="label">Accessibility checklist</span><span class="bars"><span class="bar bar--them" style="width:13.3%"></span></span><span class="gap">4%</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section" aria-labelledby="solution">
+      <p class="eyebrow">The solution</p>
+      <h2 id="solution">Check it in Figma, before handoff</h2>
+      <p>POUR is named after WCAG's four principles: Perceivable, Operable, Understandable and Robust. It lives where designers already work and checks screens and components in five steps.</p>
+      <figure class="shot">
+        <img src="../../images/pour/how-it-works-1-3.jpg" alt="Steps 1 to 3: select frames to inspect, switch WCAG and DSS rule packs on or off, and get a report that says not ready for handoff with 2 critical, 2 moderate and 3 passed" loading="lazy">
+        <figcaption>1 Select designs · 2 Choose rule packs · 3 Get a verdict: ready or not ready for handoff.</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="../../images/pour/how-it-works-4-5.webp" alt="Steps 4 and 5: an issue explaining a 3.1 to 1 contrast failure with a suggested token fix, and dark annotation cards with notes for developers" loading="lazy">
+        <figcaption>4 Review each issue with why it matters and a fix using the design system's own tokens · 5 Turn it into an annotation on the layer.</figcaption>
+      </figure>
+      <p>The annotations are written for the person who builds the screen, so the intent survives handoff:</p>
+      <div class="notes">
+        <div class="note"><span class="tag">Screen reader · WCAG 1.3.1</span><p>Heading isn't marked as a heading. Use an <code>&lt;h1&gt;</code>, not a styled <code>&lt;div&gt;</code>, and keep heading levels in order.</p></div>
+        <div class="note"><span class="tag">Screen reader · WCAG 4.1.2</span><p>Icon button needs a label. Give it a name that describes the action, like <code>aria-label="Delete invoice"</code>, not "trash icon".</p></div>
+        <div class="note"><span class="tag">DSS · BD-7</span><p>Required fields aren't marked. Set the <code>required</code> attribute so screen readers announce it.</p></div>
+      </div>
+      <div class="loop loop--after" aria-label="The workflow with POUR, which moves forward">
+        <p class="eyebrow">With POUR</p>
+        <ol class="loop-steps">
+          <li>Design system designers build components and scan them with POUR</li>
+          <li>Accessibility rules and developer notes are saved into each component</li>
+          <li>Product designers inherit them and scan their screens before handoff</li>
+        </ol>
+        <p class="loop-note">→ Fixed once, upstream, for every team that uses the component.</p>
+      </div>
+    </section>
+
+    <section class="cs-section" aria-labelledby="build">
+      <p class="eyebrow">Build</p>
+      <h2 id="build">A working plugin, not a mockup</h2>
+      <p>Our team built POUR as a real Figma plugin in plain JavaScript, with its interface made from SGDS web components, so a tool for the government's design system is built with that system too. It also runs in a mock Figma workspace in the browser, so anyone can try it without installing anything.</p>
+      <ul>
+        <li>11 checks across WCAG 2.2 AA and DSS, each linked to its guideline</li>
+        <li>Text contrast is calculated from the layer's real fill colours, not guessed from names</li>
+        <li>Reads designers' existing notes, so an image already annotated with alt text passes</li>
+        <li>Writes real Figma Dev Mode annotations, and exports reports as CSV</li>
+        <li>On the sample permit form, the "before" version fails with 13 issues; the fixed version passes all 11 checks</li>
+      </ul>
+      <h3 class="eyebrow">What I did</h3>
+      <ul class="mine">
+        <li>Worked on the research: interviews with GovTech design system designers and the designer survey</li>
+        <li>Contributed to the plugin code, including a fix for adding notes to layers that already had one. Figma returns two label fields when it reads an annotation but accepts only one when it writes, so the plugin now keeps just one.</li>
+        <li>Pitched POUR to GovTech at the showcase</li>
+      </ul>
+    </section>
+
+    <section class="cs-section" aria-labelledby="outcome">
+      <p class="eyebrow">Outcome</p>
+      <h2 id="outcome">Pitched to GovTech</h2>
+      <p>We presented POUR at the challenge showcase on 23 September 2026, where mentors and agency representatives visited our booth. Next, we'd like to scan whole user flows for things like focus order, sync component rules into the coded design system, and give GovTech a dashboard of accessibility health across agencies.</p>
+    </section>
+
+    <a class="next" href="../nomquest/index.html">
+      <span class="eyebrow">Next project</span>
+      <span class="cs-title">NomQuest →</span>
+    </a>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>NomQuest · John Loh</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<meta name="description" content="NomQuest case study: a social eating app for busy working adults, shaped by three rounds of research and testing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600&family=JetBrains+Mono:wght@400;500&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<div class="shell">
+
+  <aside class="rail" aria-label="Project facts">
+    <a class="back" href="../../index.html#work">← All work</a>
+    <div class="project-meta"><span class="chip chip--plain">School</span><span class="mono">Jun – Aug 2025</span></div>
+    <h1 class="cs-title">NomQuest</h1>
+    <p class="cs-summary">A social eating app that helps busy working adults make healthier food choices without counting calories.</p>
+    <dl class="spec">
+      <dt>Course</dt><dd>60.005 Human Computer Interaction and AI, SUTD</dd>
+      <dt>My role</dt><dd>Research, prototyping and testing, as one of five equal contributors</dd>
+      <dt>Timeline</dt><dd>Jun – Aug 2025, three iterations</dd>
+      <dt>Methods</dt><dd>Observation, interviews, heuristic evaluation, think-aloud testing, remote A/B test</dd>
+      <dt>Tools</dt><dd>Paper, Figma, Maze</dd>
+    </dl>
+    <div class="links">
+      <a href="https://youtu.be/IMJpGKvGLGM">Video walkthrough</a>
+    </div>
+  </aside>
+
+  <main class="cs-body">
+
+    <figure class="shot">
+      <div class="cover cover--phones hero-phones">
+        <img src="../../images/nomquest/screen-explore.webp" alt="Explore page with meal ideas posted by other users, tagged low carb, fiber and protein">
+        <img src="../../images/nomquest/screen-fnb.webp" alt="Find nom places page with location, budget and rows of restaurants matched to each dietary goal">
+        <img src="../../images/nomquest/screen-profile.webp" alt="Profile with four dietary goals, a food journal and saved collections">
+      </div>
+      <figcaption>The final design: find meal ideas, find places that fit your goals, and keep track of your own.</figcaption>
+    </figure>
+
+    <section class="cs-section" aria-labelledby="problem">
+      <p class="eyebrow">The problem</p>
+      <h2 id="problem">Healthy eating falls apart at lunch</h2>
+      <p>We observed and interviewed 5 working adults, aged 25 to 59, about how they decide what to eat, buy and cook. They knew what healthy food looked like. What got in the way was everything around the meal.</p>
+      <ul class="quotes-inline">
+        <li>“When I'm with colleagues, I'll just follow what they're eating.”</li>
+        <li>“During lunch break, I need something quick. No time to think about nutrition.”</li>
+        <li>“I'd track my meals if it were fun or easy, like a cute self-care app.”</li>
+      </ul>
+      <ul>
+        <li><strong>Who you eat with decides what you eat.</strong> People ate lighter alone and followed the group at work or with family.</li>
+        <li><strong>Time beats nutrition.</strong> Short lunch breaks pushed people to whatever was closest.</li>
+        <li><strong>Tracking feels like homework.</strong> Calorie apps felt stressful, and the numbers were unreliable for local hawker food.</li>
+      </ul>
+      <p class="hmw">Singaporean working adults struggle to keep healthy eating habits because of hectic schedules, social pressure around meals and a lack of convenient tools to stay accountable.</p>
+    </section>
+
+    <section class="cs-section" aria-labelledby="scale">
+      <p class="eyebrow">Process</p>
+      <h2 id="scale">Three rounds, each one tested</h2>
+      <div class="stats">
+        <div class="stat"><b>5</b><span>working adults observed and interviewed</span></div>
+        <div class="stat"><b>5</b><span>evaluators rated the paper prototype</span></div>
+        <div class="stat"><b>5</b><span>participants in a think-aloud lab study</span></div>
+        <div class="stat"><b>54</b><span>people in a remote A/B test</span></div>
+      </div>
+    </section>
+
+    <section class="cs-section" aria-labelledby="iter1">
+      <p class="eyebrow">Iteration 1 · paper prototype</p>
+      <h2 id="iter1">The feature that broke for groups</h2>
+      <p>We sketched 13 screens on paper and had 5 evaluators rate the problems against Nielsen's usability heuristics. The worst problem scored 4 out of 4. Our "Near you" feature suggested restaurants based on where each person was, so a group of friends spread across Singapore all got different suggestions for the same lunch.</p>
+      <figure class="shot">
+        <img src="../../images/nomquest/paper-prototypes.jpg" alt="Three hand-drawn paper screens: a food feed, a friend group page with recommendations, and a profile with goals" loading="lazy">
+        <figcaption>Paper screens for the feed, a friend group and the profile.</figcaption>
+      </figure>
+      <ul>
+        <li>Replaced "Near you" with <strong>Set location</strong>, so a group picks one meeting point</li>
+        <li>Let people type their own dietary restrictions instead of choosing from checkboxes</li>
+        <li>Redrew the groups icon with three people, after evaluators mistook it for a friends list</li>
+        <li>Split Share and Save into separate actions, and labelled who can see your goals</li>
+      </ul>
+    </section>
+
+    <section class="cs-section" aria-labelledby="iter2">
+      <p class="eyebrow">Iteration 2 · high-fidelity prototype</p>
+      <h2 id="iter2">Four of our five claims were wrong</h2>
+      <p>We built a 25-screen Figma prototype and ran a lab study where 5 participants worked through three realistic scenarios while thinking aloud. Before testing, we wrote down what we expected to see.</p>
+      <ul class="claims">
+        <li><span class="claimed">Everyone updates their goals without a misstep</span><span class="found"><strong>4 of 5</strong> made missteps</span></li>
+        <li><span class="claimed">Everyone finds a suitable place nearby in under 30 seconds</span><span class="found"><strong>3 of 5</strong> took longer, unsure which page was which</span></li>
+        <li><span class="claimed">80% follow the group meal flow as intended</span><span class="found"><strong>5 of 5</strong> needed help</span></li>
+        <li><span class="claimed">Everyone creates a post without help</span><span class="found"><strong>4 of 5</strong> managed it</span></li>
+      </ul>
+      <ul class="quotes-inline">
+        <li>“Felt like no correlation between chat and starting a meal.”</li>
+        <li>“NomQuest and NomTime are confusing. Can't tell what I'm looking at.”</li>
+      </ul>
+      <figure class="shot">
+        <img src="../../images/nomquest/iteration2-hifi.jpg" alt="Five iteration 2 screens: profile, group chat, group recommendations, NOM Time restaurant page and the home feed" loading="lazy">
+        <figcaption>Iteration 2. Two similar-looking feeds and a separate "start meal" step confused almost everyone.</figcaption>
+      </figure>
+      <p>Looking back at it as a team, we also saw that we'd added features one at a time until NomQuest felt like a generic food app. The next round had to bring it back to conscious eating.</p>
+    </section>
+
+    <section class="cs-section" aria-labelledby="iter3">
+      <p class="eyebrow">Iteration 3 · redesign</p>
+      <h2 id="iter3">Simpler, and clear about what each page is for</h2>
+      <div class="pair">
+        <figure>
+          <img src="../../images/nomquest/groups-before-iter2.jpg" alt="Before: a group page listing past meals with a Start Meal button" loading="lazy">
+          <figcaption><strong>Before</strong>A list of past meals, with planning hidden behind "Start meal".</figcaption>
+        </figure>
+        <figure>
+          <img src="../../images/nomquest/screen-group-chat.jpg" alt="After: the group opens straight into a chat with a row of goal-matched restaurants and a Nom Vote button" loading="lazy">
+          <figcaption><strong>After</strong>The group opens straight into the chat, with goal-matched places on top and a vote button.</figcaption>
+        </figure>
+      </div>
+      <ul>
+        <li>Clear page titles: "Explore nom ideas" for inspiration, "Find nom places" for restaurants</li>
+        <li>Filters for location, budget and health tags</li>
+        <li>Saved posts moved into the profile, next to your goals and food journal</li>
+        <li>A visible way to add friends</li>
+      </ul>
+    </section>
+
+    <section class="cs-section" aria-labelledby="ab">
+      <p class="eyebrow">Iteration 3 · A/B test</p>
+      <h2 id="ab">We expected suggestions to help. They didn't.</h2>
+      <p>Setting a dietary goal is the first thing that makes NomQuest personal, so we tested one question: does suggesting goals make goal-setting more satisfying? Version A offered suggested goals plus a text box. Version B had only the text box.</p>
+      <figure class="shot">
+        <img src="../../images/nomquest/flow-version-a-suggested-goals.jpg" alt="Figma prototype flow for version A, with suggested goals shown below the text box" loading="lazy">
+        <figcaption>Version A's prototype flow in Figma. Version B was the same without the suggestions.</figcaption>
+      </figure>
+      <p>We built both versions as Maze tests and sent them to working adults through our own networks, who passed them on. 54 people took part, 36 in A and 18 in B, so we compared percentages instead of raw counts. Each person added a goal, then rated satisfaction and ease from 1 to 7.</p>
+      <figure class="shot">
+        <img src="../../images/nomquest/ab-test-results.jpg" alt="Version A and B screens beside bar charts of satisfaction and intuitiveness scores from 1 to 7, with version B scoring higher in the top range" loading="lazy">
+        <figcaption>Version B, with no suggestions, had a larger share of 5 to 7 scores for both satisfaction and ease.</figcaption>
+      </figure>
+      <p>The heatmaps helped explain why. Tapping "Add goal" opened the text box first, and the suggestions sat further down, so most people in Version A never noticed them. They typed their own goal, and found that satisfying.</p>
+      <figure class="shot">
+        <img src="../../images/nomquest/heatmaps.jpg" alt="Five click heatmaps showing misclicks on the first screen, confident taps on edit goals, and taps concentrated on the text box rather than the suggestions" loading="lazy">
+        <figcaption>Maze heatmaps from the task.</figcaption>
+      </figure>
+      <p>Our proposed fix was to show the suggestions in place of the "Add goal" button, so people see them before they start typing.</p>
+    </section>
+
+    <section class="cs-section" aria-labelledby="learned">
+      <p class="eyebrow">What I learned</p>
+      <h2 id="learned">Test the thing you're sure about</h2>
+      <p>Every round overturned something we were confident about, from the "Near you" logic to the goal suggestions. It taught me to write claims down before testing, so the results can prove us wrong, and how much a small detail like the order of two elements can change what people do.</p>
+      <p class="mono" style="color:var(--ink-soft)">Team: Daena, Shannon, Rebecca, Natalie Soh and John Loh, all contributing equally.</p>
+    </section>
+
+    <a class="next" href="../prodinsight/index.html">
+      <span class="eyebrow">Next project</span>
+      <span class="cs-title">ProdInsight →</span>
+    </a>
+  </main>
+</div>
+</body>
+</html>

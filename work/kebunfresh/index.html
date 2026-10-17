@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>KebunFresh · John Loh</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<meta name="description" content="KebunFresh: a marketplace connecting households in Surabaya with nearby farms, built with Petra Christian University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600&family=JetBrains+Mono:wght@400;500&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<div class="shell">
+
+  <aside class="rail" aria-label="Project facts">
+    <a class="back" href="../../index.html#work">← All work</a>
+    <div class="project-meta"><span class="chip chip--plain">School · overseas</span><span class="mono">Jan 2025</span></div>
+    <h1 class="cs-title">KebunFresh</h1>
+    <p class="cs-summary">A marketplace where households in Surabaya can see what nearby farms are harvesting, and buy it directly.</p>
+    <dl class="spec">
+      <dt>Programme</dt><dd>FACT overseas trip, SUTD × Petra Christian University, Surabaya</dd>
+      <dt>My role</dt><dd>Product management and frontend</dd>
+      <dt>Team</dt><dd>SUTD and Petra students</dd>
+      <dt>Built with</dt><dd>Streamlit, Python, PySpark (ALS recommender)</dd>
+    </dl>
+    <div class="links">
+      <a href="https://kebunfresh.streamlit.app/">Live app</a>
+      <a href="https://github.com/7ohnloh/Kebun-Fresh">Code on GitHub</a>
+    </div>
+  </aside>
+
+  <main class="cs-body">
+
+    <figure class="shot">
+      <img src="../../images/kebunfresh/app-homepage-live.jpg" alt="KebunFresh homepage in Bahasa Indonesia: set your location, search for produce, and a farm card with rating, distance, price and harvest date">
+      <figcaption>The live app. Set your location, search, and see each farm's rating, distance, price and when the crop is ready.</figcaption>
+    </figure>
+
+    <section class="cs-section" aria-labelledby="context">
+      <p class="eyebrow">Context</p>
+      <h2 id="context">A farm with produce and no buyers</h2>
+      <p>On a cross-cultural trip with Petra Christian University, our mixed team visited an edu farm in Gunung Anyar, Surabaya. Small farms there grow good produce but reach few customers, and nearby households don't know what's being harvested or where to buy it. Farms lean on resellers to sell.</p>
+      <p class="hmw">How might we help buyers find and buy fresh crops by connecting them with the best farms for them?</p>
+    </section>
+
+    <section class="cs-section" aria-labelledby="people">
+      <p class="eyebrow">Who it's for</p>
+      <h2 id="people">Two buyers and a farmer</h2>
+      <div class="notes">
+        <div class="note"><span class="tag">Buyer · 37</span><p><strong>Siti</strong> works and cooks for her kids. She shops online but doesn't know which farm has what, or when.</p></div>
+        <div class="note"><span class="tag">Buyer · 70</span><p><strong>Tutik</strong> has a low income, limited mobility and little experience with apps, and wants to see produce before she buys it.</p></div>
+        <div class="note"><span class="tag">Seller · 40</span><p><strong>Budi</strong> farms a small plot. He can't see what buyers want and has few customers.</p></div>
+      </div>
+    </section>
+
+    <section class="cs-section" aria-labelledby="product">
+      <p class="eyebrow">My part · product and frontend</p>
+      <h2 id="product">From paper to a working app</h2>
+      <p>I shaped what the product had to do for each side, then built the interface. We started on paper, and turned it into a working multi-page app in Streamlit.</p>
+      <div class="pair">
+        <figure>
+          <img src="../../images/kebunfresh/lofi-paper-prototype.jpg" alt="Hand-drawn paper prototype screens laid out on a table" loading="lazy" style="border-radius:8px">
+          <figcaption><strong>Paper</strong>Login, search, farm pages and a wishlist.</figcaption>
+        </figure>
+        <figure>
+          <img src="../../images/kebunfresh/app-role-select-live.jpg" alt="Live app start screen asking whether you are a buyer or a seller" loading="lazy" style="border-radius:8px">
+          <figcaption><strong>Live</strong>Choose buyer or seller to start.</figcaption>
+        </figure>
+      </div>
+      <ul>
+        <li><strong>For buyers:</strong> search and sort farms by distance, see when each crop will be ready, save crops to a wishlist, then pick up at the farm. Notifications for wishlist crops were planned next.</li>
+        <li><strong>For farmers:</strong> a wider reach, and wishlist data that shows which crops people want</li>
+        <li><strong>For trust:</strong> buyers rate farms, and ratings show on every card</li>
+      </ul>
+      <p>The "For you" page recommends well-rated produce you haven't bought yet, using collaborative filtering (ALS in PySpark) trained on users' ratings.</p>
+    </section>
+
+    <a class="next" href="../grantpal/index.html">
+      <span class="eyebrow">Back to the start</span>
+      <span class="cs-title">GrantPal →</span>
+    </a>
+  </main>
+</div>
+</body>
+</html>

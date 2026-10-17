@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>GrantPal · John Loh</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<meta name="description" content="GrantPal case study: an AI grant helper for the social enterprise BeingBridges.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600&family=JetBrains+Mono:wght@400;500&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<div class="shell">
+
+  <aside class="rail" aria-label="Project facts">
+    <a class="back" href="../../index.html#work">← All work</a>
+    <div class="project-meta"><span class="chip">Client</span><span class="mono">May – Aug 2025</span></div>
+    <h1 class="cs-title">GrantPal</h1>
+    <p class="cs-summary">An AI assistant that helps a two-person social enterprise spend less time on grant admin and more on its work.</p>
+    <dl class="spec">
+      <dt>Client</dt><dd>BeingBridges</dd>
+      <dt>My role</dt><dd>Tech lead</dd>
+      <dt>Team</dt><dd>5 students</dd>
+      <dt>Timeline</dt><dd>May – Aug 2025, 13 weeks</dd>
+      <dt>Course</dt><dd>SUTD Service Design Studio</dd>
+      <dt>Stack</dt><dd>React, Flask, SQLite, OpenAI API, Google Calendar API, Render</dd>
+    </dl>
+    <div class="links">
+      <a href="https://grantpala.onrender.com">Live app</a>
+      <a href="https://github.com/7ohnloh/GrantPalA">Code</a>
+      <a href="https://sites.google.com/view/grantpal/home">Project site</a>
+    </div>
+  </aside>
+
+  <main class="cs-body">
+
+    <figure class="shot">
+      <img src="../../images/grantpal/hero-trackerpal.jpg" alt="TrackerPal dashboard: grant applications grouped by project, each with a status tag and deadline, beside a to-do list and calendar">
+      <figcaption>TrackerPal, the dashboard: every grant grouped by project, with its status, deadline and a synced calendar.</figcaption>
+    </figure>
+
+    <section class="cs-section" aria-labelledby="problem">
+      <p class="eyebrow">The problem</p>
+      <h2 id="problem">Two people, a lot of paperwork</h2>
+      <p>BeingBridges runs projects that bring people of different cultures, races and faiths together, like a card game for conversations about diversity and virtual visits to places of worship. It's run by two people, and it applies for grants to fund its projects.</p>
+      <p>Each grant restarted the same cycle. They tracked funder emails and deadlines by hand, checked every grant's layered eligibility rules against each project, and hunted through old files for answers to questions that every funder asked in a slightly different way. When an application was rejected, the cycle started again.</p>
+      <p class="hmw">How might we help BeingBridges spend less time and fewer resources on grant administration?</p>
+    </section>
+
+    <section class="cs-section" aria-labelledby="process">
+      <p class="eyebrow">Process</p>
+      <h2 id="process">We designed for the wrong form first</h2>
+      <p>In the first sprint we mapped their workflow, built a persona and listed the pain points. We took cues from Grammarly, where AI handles the tedious work and the user stays in control. Our first concept was a browser extension that would fill in online grant portals automatically.</p>
+      <div class="pivot">
+        <p class="eyebrow">Feedback session with the client</p>
+        <div class="pivot-cols">
+          <div><strong>What we assumed</strong><p>Applicants fill in grant forms in online portals.</p></div>
+          <div><strong>What we learned</strong><p>Funders send questions as a brief or PDF, and applicants draft their answers in Word.</p></div>
+          <div><strong>What we changed</strong><p>We dropped portal autofill and rebuilt around documents: upload the funder's file and your project files, and get drafts back.</p></div>
+        </div>
+      </div>
+      <p>After the pivot, each pain point mapped to one tool. We called them Pals, and gave each one a character so a tiring task would feel a little lighter.</p>
+      <figure class="shot">
+        <img src="../../images/grantpal/pain-to-feature.jpg" alt="Three pain points mapped to three features: deadlines to tracking, manual eligibility checks to AI summaries, hunting across files to AI-suggested answers" loading="lazy">
+        <figcaption>From pain point to feature.</figcaption>
+      </figure>
+    </section>
+
+    <section class="cs-section" aria-labelledby="pals">
+      <p class="eyebrow">The product</p>
+      <h2 id="pals">Three Pals</h2>
+      <div class="pals">
+        <div class="pal">
+          <div>
+            <h3>TrackerPal</h3>
+            <p>Keeps every application and deadline in one place.</p>
+            <ul>
+              <li>Grant cards grouped by project, tagged Urgent, In progress or Not started</li>
+              <li>To-do list for the tasks around each application</li>
+              <li>Deadlines and reminders synced to Google Calendar</li>
+            </ul>
+          </div>
+          <figure class="shot"><img src="../../images/grantpal/trackerpal-character.jpg" alt="TrackerPal's character, a pink star, saying remember to get this done" loading="lazy"></figure>
+        </div>
+        <div class="pal">
+          <div>
+            <h3>CheckerPal</h3>
+            <p>Answers "are we even eligible?" without reading the whole document.</p>
+            <ul>
+              <li>Summarizes a funder's PDF, document or web page into its key requirements</li>
+              <li>Summarizes the project the same way</li>
+              <li>Scores how well the project matches the grant</li>
+            </ul>
+          </div>
+          <figure class="shot"><img src="../../images/grantpal/checkerpal.jpg" alt="CheckerPal three-step flow: grant summary, project summary, eligibility match, with a grant URL being summarized" loading="lazy"></figure>
+        </div>
+        <div class="pal">
+          <div>
+            <h3>AnswerPal</h3>
+            <p>Drafts answers from what the team has already written.</p>
+            <ul>
+              <li>Upload the funder's questions and a project document</li>
+              <li>Get a suggested answer for each question</li>
+              <li>Regenerate, pick the best version, edit it, and export to Word</li>
+            </ul>
+          </div>
+          <figure class="shot"><img src="../../images/grantpal/answerpal.jpg" alt="AnswerPal upload screen for the application questions document and the project information document" loading="lazy"></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section" aria-labelledby="build">
+      <p class="eyebrow">Build</p>
+      <h2 id="build">How it works</h2>
+      <div class="flow" aria-label="Data flow">
+        <div class="flow-step"><b>React</b>Upload files in a two-panel interface</div>
+        <span class="flow-arrow" aria-hidden="true">→</span>
+        <div class="flow-step"><b>Flask</b>Validates files and handles the request</div>
+        <span class="flow-arrow" aria-hidden="true">→</span>
+        <div class="flow-step"><b>PyPDF2, python-docx</b>Extract the text</div>
+        <span class="flow-arrow" aria-hidden="true">→</span>
+        <div class="flow-step"><b>OpenAI API</b>Summarizes, scores and drafts</div>
+        <span class="flow-arrow" aria-hidden="true">→</span>
+        <div class="flow-step"><b>React</b>Edit, regenerate or export the draft</div>
+      </div>
+      <p>Uploaded files are size-checked, stored only temporarily and cleaned up afterwards. API keys stay on the server.</p>
+      <h3 class="eyebrow">What I did as tech lead</h3>
+      <ul class="mine">
+        <li>Turned what the client told us into a system architecture and a feature roadmap</li>
+        <li>Led the technical work across backend, frontend and AI integration</li>
+        <li>Built the React frontend</li>
+        <li>Built the AI modules for eligibility analysis and answer drafting with the OpenAI API</li>
+        <li>Automated deadline tracking through the Google Calendar API</li>
+      </ul>
+    </section>
+
+    <section class="cs-section" aria-labelledby="outcome">
+      <p class="eyebrow">Outcome</p>
+      <h2 id="outcome">Less admin, more impact</h2>
+      <p>GrantPal runs as a working web app. The searching, checking and drafting that used to be spread across emails and folders now sit in one tool. The same approach would work for any small social enterprise that depends on grants.</p>
+      <figure class="shot">
+        <img src="../../images/grantpal/impact.jpg" alt="Word cloud with admin tasks faded into the background and meaningful impact in the center" loading="lazy">
+        <figcaption>The goal: admin fades into the background.</figcaption>
+      </figure>
+      <p class="mono" style="color:var(--ink-soft)">Team: Aniag Daena Mitchelle Ocampo (project lead), Loh Jia Le John (tech lead), Natalie Soh Leigh, Lew Xin-En Shannon, Tan Le Yan Rebecca. Mentors: Dr. Ee May Kan, Dr. Yiming Qian.</p>
+    </section>
+
+    <a class="next" href="../pour/index.html">
+      <span class="eyebrow">Next project</span>
+      <span class="cs-title">POUR →</span>
+    </a>
+  </main>
+</div>
+</body>
+</html>

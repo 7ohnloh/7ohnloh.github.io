@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>ProdInsight · John Loh</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<meta name="description" content="ProdInsight: mining YouTube and Reddit comments to benchmark AirPods Max against Sony and Sennheiser.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600&family=JetBrains+Mono:wght@400;500&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<div class="shell">
+
+  <aside class="rail" aria-label="Project facts">
+    <a class="back" href="../../index.html#work">← All work</a>
+    <div class="project-meta"><span class="chip chip--plain">School</span><span class="mono">Apr – May 2025</span></div>
+    <h1 class="cs-title">ProdInsight</h1>
+    <p class="cs-summary">What do real users say a premium product gets wrong? We mined YouTube and Reddit comments to find out.</p>
+    <dl class="spec">
+      <dt>Course</dt><dd>60.002 AI Applications in Design, SUTD</dd>
+      <dt>My role</dt><dd>Data collection: the YouTube and Reddit scrapers, plus pipeline code</dd>
+      <dt>Team</dt><dd>5 students</dd>
+      <dt>Built with</dt><dd>Python, YouTube Data API, PRAW, pandas, TextBlob, sentence-transformers, FAISS, GPT-3.5</dd>
+    </dl>
+    <div class="links">
+      <a href="https://github.com/7ohnloh/ProdInsight">Code on GitHub</a>
+    </div>
+  </aside>
+
+  <main class="cs-body">
+
+    <section class="cs-section" aria-labelledby="question">
+      <p class="eyebrow">The question</p>
+      <h2 id="question">Where does AirPods Max fall behind?</h2>
+      <p>Apple's AirPods Max competes with Sony's WH-1000XM5 and Sennheiser's Momentum 4. Reviews tell you what critics think. We wanted to know what owners say, feature by feature, and turn that into design opportunities a product team could act on.</p>
+      <div class="flow" aria-label="Pipeline">
+        <div class="flow-step"><b>Collect</b>YouTube and Reddit comments</div>
+        <span class="flow-arrow" aria-hidden="true">→</span>
+        <div class="flow-step"><b>Clean</b>Remove links, keep tone</div>
+        <span class="flow-arrow" aria-hidden="true">→</span>
+        <div class="flow-step"><b>Score</b>Sentiment per feature</div>
+        <span class="flow-arrow" aria-hidden="true">→</span>
+        <div class="flow-step"><b>Compare</b>Gap against competitors</div>
+        <span class="flow-arrow" aria-hidden="true">→</span>
+        <div class="flow-step"><b>Explain</b>RAG turns comments into opportunities</div>
+      </div>
+    </section>
+
+    <section class="cs-section" aria-labelledby="data">
+      <p class="eyebrow">My part · data collection</p>
+      <h2 id="data">Getting comments that count</h2>
+      <p>I built the scrapers for all three products. From YouTube we took up to 500 top-level comments per video, with their like counts. From Reddit we took the top posts for each product, including nested replies and vote scores.</p>
+      <p>Not every comment carries the same weight, so each one was scored on three things:</p>
+      <div class="stats">
+        <div class="stat"><b>50%</b><span>how strongly positive or negative it is</span></div>
+        <div class="stat"><b>30%</b><span>how many likes it got</span></div>
+        <div class="stat"><b>20%</b><span>how long it is, as a sign of substance</span></div>
+      </div>
+      <p>We cleaned the text lightly on purpose. "I love it!!!" says more than "I love it", and the sentiment model reads punctuation and emoji, so we only removed links and standardized capitalization.</p>
+    </section>
+
+    <section class="cs-section" aria-labelledby="gaps">
+      <p class="eyebrow">Findings</p>
+      <h2 id="gaps">Five features where it trails</h2>
+      <p>We scored each comment that mentioned a feature as positive, neutral or negative, then compared AirPods Max with the average of its two rivals. Any gap above 0.2 counted as underperforming.</p>
+      <div class="hchart" role="img" aria-label="AirPods Max against the Sony and Sennheiser average. Microphone 0.33 vs 0.67, fit 0.57 vs 0.85, build 0.53 vs 0.79, latency 0.16 vs 0.41, comfort 0.56 vs 0.76.">
+        <p class="chart-title">Average sentiment per feature, 0 to 1 · gap to competitors on the right</p>
+        <div class="chart-rows">
+          <div class="chart-row"><span class="label">Microphone</span><span class="bars"><span class="bar bar--them" style="width:67%"></span><span class="bar bar--us" style="width:33%"></span></span><span class="gap">−0.34</span></div>
+          <div class="chart-row"><span class="label">Fit</span><span class="bars"><span class="bar bar--them" style="width:85%"></span><span class="bar bar--us" style="width:57%"></span></span><span class="gap">−0.28</span></div>
+          <div class="chart-row"><span class="label">Build</span><span class="bars"><span class="bar bar--them" style="width:79%"></span><span class="bar bar--us" style="width:53%"></span></span><span class="gap">−0.26</span></div>
+          <div class="chart-row"><span class="label">Latency</span><span class="bars"><span class="bar bar--them" style="width:41%"></span><span class="bar bar--us" style="width:16%"></span></span><span class="gap">−0.25</span></div>
+          <div class="chart-row"><span class="label">Comfort</span><span class="bars"><span class="bar bar--them" style="width:76%"></span><span class="bar bar--us" style="width:56%"></span></span><span class="gap">−0.21</span></div>
+        </div>
+        <div class="legend"><span><i style="background:var(--sage)"></i>AirPods Max</span><span><i style="background:var(--bar-muted)"></i>Sony + Sennheiser average</span></div>
+      </div>
+    </section>
+
+    <section class="cs-section" aria-labelledby="rag">
+      <p class="eyebrow">From numbers to ideas</p>
+      <h2 id="rag">Opportunities you can trace back</h2>
+      <p>A gap tells you where, not why. We embedded every comment and indexed them with FAISS, so a search for "battery" finds "lasts for 30 hours on a single charge" even though the words don't match. For each weak feature, the 10 most relevant comments went to GPT-3.5, which pulled out pain points, unmet needs and suggestions.</p>
+      <div class="notes">
+        <div class="note"><span class="tag">Fit</span><p>Comfort for people with bigger ears, more adjustability, and more colour choices.</p></div>
+        <div class="note"><span class="tag">Latency</span><p>Confusion about "low latency" being marketed for a wired mode, and interest in a dual wired and wireless mode.</p></div>
+        <div class="note"><span class="tag">Microphone</span><p>Inconsistent call quality that makes the price feel hard to justify.</p></div>
+      </div>
+      <p>Because each idea comes from specific comments, a designer can read exactly what users said, like "hurts after 30 minutes" instead of a vague "uncomfortable".</p>
+    </section>
+
+    <section class="cs-section" aria-labelledby="limits">
+      <p class="eyebrow">Limitations</p>
+      <h2 id="limits">What the data can't tell you</h2>
+      <ul>
+        <li>Reddit leans technical and audiophile, and YouTube comments are shorter and more emotional. Shopping sites like Amazon and Shopee would add other voices, but their APIs were restricted.</li>
+        <li>TextBlob can miss sarcasm. We chose it over VADER because its continuous scores ranked how strong each comment was more precisely.</li>
+      </ul>
+    </section>
+
+    <a class="next" href="../kebunfresh/index.html">
+      <span class="eyebrow">Next project</span>
+      <span class="cs-title">KebunFresh →</span>
+    </a>
+  </main>
+</div>
+</body>
+</html>
