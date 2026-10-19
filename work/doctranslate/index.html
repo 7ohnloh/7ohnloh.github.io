@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>DocTranslate · John Loh</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<meta name="description" content="DocTranslate case study: a translation tool I started on my own at Hegen, rebuilt as a private web app.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600&family=JetBrains+Mono:wght@400;500&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<div class="shell">
+
+  <aside class="rail" aria-label="Project facts">
+    <a class="back" href="../../index.html#work">← All work</a>
+    <div class="project-meta"><span class="chip">Internship · self-initiated</span></div>
+    <h1 class="cs-title">DocTranslate</h1>
+    <p class="cs-summary">A tool I built outside my job description to translate Word and PowerPoint files, then rebuilt so anyone can use it without their file leaving their computer.</p>
+    <dl class="spec">
+      <dt>Where</dt><dd>Hegen, Strategy and Transformation</dd>
+      <dt>My role</dt><dd>Spotted the problem, then designed and built every version myself</dd>
+      <dt>Timeline</dt><dd>Nov – Dec 2025 at Hegen · web app Oct 2026</dd>
+      <dt>Built with</dt><dd>Python, Tkinter · React, TypeScript, JSZip, Claude Code</dd>
+    </dl>
+    <div class="links">
+      <a href="https://7ohnloh.github.io/doctranslate/">Live app</a>
+      <a href="https://github.com/7ohnloh/doctranslate">Code</a>
+    </div>
+  </aside>
+
+  <main class="cs-body">
+
+    <figure class="shot">
+      <img src="../../images/doctranslate/upload-hero.jpg" alt="DocTranslate home screen: a badge saying your file never leaves your device, the headline Translate Word and PowerPoint files, layout intact, and a drop zone with sample files">
+      <figcaption>DocTranslate today. Try it with the built-in sample, no file needed.</figcaption>
+    </figure>
+    <a class="button" href="https://7ohnloh.github.io/doctranslate/">Try the live app →</a>
+
+    <section class="cs-section" aria-labelledby="why">
+      <p class="eyebrow">Why it exists</p>
+      <h2 id="why">Not my job, but a problem I couldn't ignore</h2>
+      <p>At Hegen my main job was leading the rollout of a learning platform for franchise and licensing partners. Separately, the company's international distributors, including those in China and Taiwan, needed company documents in their own language.</p>
+      <p>My colleagues were translating those Word files and slide decks by hand. The documents were confidential, so nobody was comfortable pasting them into AI tools. It was slow, repetitive work, and it wasn't my task, but I could see that a small tool would help.</p>
+    </section>
+
+    <section class="cs-section" aria-labelledby="versions">
+      <p class="eyebrow">Process</p>
+      <h2 id="versions">Three versions, each one easier to use</h2>
+      <ol class="versions">
+        <li class="version">
+          <div class="v-label"><b>Colab notebooks</b><span>At Hegen</span></div>
+          <dl>
+            <dt>What</dt><dd>Python scripts for Word and PowerPoint, starting with Chinese for the distributors</dd>
+            <dt>Problem</dt><dd>Confidential files had to be uploaded to the cloud, and colleagues had to learn to run code</dd>
+          </dl>
+        </li>
+        <li class="version">
+          <div class="v-label"><b>Windows app</b><span>At Hegen</span></div>
+          <dl>
+            <dt>What</dt><dd>The scripts packaged as a desktop app colleagues could download and run on their own laptops</dd>
+            <dt>Result</dt><dd>Colleagues working on the translation project used it, and it worked</dd>
+            <dt>Problem</dt><dd>Mac users couldn't run it, it was a 124 MB download, and the interface was clunky</dd>
+          </dl>
+        </li>
+        <li class="version version--now">
+          <div class="v-label"><b>Web app</b><span>Oct 2026, after the internship</span></div>
+          <dl>
+            <dt>What</dt><dd>A rebuild that runs in any browser, on any computer, with the file never leaving the device</dd>
+            <dt>Why</dt><dd>Looking back, I wanted it to look better and work for everyone, including Mac users</dd>
+          </dl>
+        </li>
+      </ol>
+      <p>The first version was a set of Colab notebooks. Every run started by uploading the document to Google's servers, the step I most wanted to remove:</p>
+<pre class="code"><span class="c"># Colab notebook, Word version</span>
+!pip install python-docx googletrans==4.0.0-rc1 -q
+from google.colab import files
+from googletrans import Translator
+
+SOURCE_LANG = "en"            <span class="c"># fixed to English</span>
+uploaded = files.upload()     <span class="c"># the confidential file goes to the cloud</span></pre>
+      <p>Packaging it as a Windows app solved both problems for most of the team: the file stayed on their laptop, and there was nothing to install or run. Looking back at it as a designer, though, the interface made people work around it:</p>
+      <ul>
+        <li>You had to pick "Word or PowerPoint" from a menu before choosing the file, though the file name already said which</li>
+        <li>A list of about 100 languages with no search</li>
+        <li>Errors only appeared in pop-ups after you clicked</li>
+        <li>A bare progress bar, with no count and no way to cancel</li>
+        <li>Behind the scenes, formatting was wiped and each run overwrote the last file</li>
+      </ul>
+    </section>
+
+    <section class="cs-section" aria-labelledby="rebuild">
+      <p class="eyebrow">The rebuild</p>
+      <h2 id="rebuild">How I'd do it now</h2>
+      <p>After the internship I kept thinking about how I could have done it better. With AI coding tools like Claude Code, I could finally rebuild it the way I'd want to use it: in the browser, so it works on any computer, with a proper interface. Moving to the web raised a hard question first.</p>
+      <p class="hmw">Would you upload a confidential document to a stranger's website?</p>
+      <p>So the rule I designed around was: no server, no database, no uploads. The page opens the file inside your browser, sends only the text to Google Translate, the same service every earlier version used, and puts the translated document back together on your computer. The app explains this on its first screen, including the part that does go to Google.</p>
+      <figure class="shot">
+        <img src="../../images/doctranslate/privacy-progress.jpg" alt="Translation in progress, 0 of 20, above a three-step explainer: opened locally in your browser, text translated by Google Translate, rebuilt and downloaded in your browser" loading="lazy">
+        <figcaption>Progress with a count and a Cancel button, above a plain explanation of where your data goes.</figcaption>
+      </figure>
+    </section>
+
+    <section class="cs-section" aria-labelledby="review">
+      <p class="eyebrow">New in the web app</p>
+      <h2 id="review">Check the translation before you download</h2>
+      <p>Machine translation makes mistakes. In testing, "a line <em>break</em>" came back in Japanese as a <em>rest</em> break. The old app saved the file straight away, so nobody had a chance to catch that. The web app adds a review step:</p>
+      <figure class="shot">
+        <img src="../../images/doctranslate/review-chinese.jpg" alt="Review screen showing a sample onboarding deck in English beside its Chinese translation, grouped by slide, with search, an Edited filter and a Download button" loading="lazy">
+        <figcaption>The sample deck translated into Chinese, grouped by slide, ready to check and edit.</figcaption>
+      </figure>
+      <ul>
+        <li>Original and translation side by side, grouped by slide or section</li>
+        <li>Every line is editable, with an "Edited" badge and Undo</li>
+        <li>Text that repeats is edited once and updated everywhere, so terms stay consistent</li>
+        <li>Anything that couldn't be translated is highlighted instead of failing silently</li>
+      </ul>
+    </section>
+
+    <section class="cs-section" aria-labelledby="compare">
+      <p class="eyebrow">Before and after</p>
+      <h2 id="compare">Windows app vs web app</h2>
+      <div class="compare-wrap">
+        <table class="compare">
+          <thead><tr><th scope="col"></th><th scope="col">Windows app</th><th scope="col">Web app</th></tr></thead>
+          <tbody>
+            <tr><td>Who can use it</td><td>Windows only, 124 MB download</td><td>Any browser, about 110 KB</td></tr>
+            <tr><td>Choosing a file</td><td>Pick the type, then the file</td><td>Drag and drop, type detected</td></tr>
+            <tr><td>Languages</td><td>Long list, source fixed to English</td><td>Search, suggestions, auto-detect</td></tr>
+            <tr><td>Mistakes</td><td>Pop-up after clicking</td><td>Inline hint before you click</td></tr>
+            <tr><td>Progress</td><td>Bare bar</td><td>"29 of 48", with Cancel</td></tr>
+            <tr><td>Quality check</td><td>None</td><td>Review and edit every line</td></tr>
+            <tr><td>Formatting</td><td>Reset to defaults</td><td>Font, size, bold and colour kept</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 class="eyebrow">What I left out, and why</h3>
+      <ul>
+        <li><strong>Translating text inside images.</strong> It would add several megabytes for every visitor, and the translated text couldn't go back into the image anyway.</li>
+        <li><strong>Accounts and history.</strong> Saving history needs a database, which breaks the no-uploads rule.</li>
+      </ul>
+    </section>
+
+    <section class="cs-section" aria-labelledby="learned">
+      <p class="eyebrow">What I learned</p>
+      <h2 id="learned">The first version is a start, not the answer</h2>
+      <p>The Windows app did its job, and colleagues used it. But going back to it later showed me how much of the work it left to the user. Each version reached more people because I asked who still couldn't use it and why. And being clear about where data goes earns more trust than a vague promise that it's "secure".</p>
+      <figure class="quote" style="margin:0">
+        <blockquote><p>“An eagerness to take on responsibilities beyond the typical scope of an intern.”</p></blockquote>
+        <figcaption><strong>Hans Chan</strong>Strategy and Transformation, Hegen · 2025</figcaption>
+      </figure>
+    </section>
+
+    <a class="next" href="../econova/index.html">
+      <span class="eyebrow">Next project</span>
+      <span class="cs-title">Econova →</span>
+    </a>
+  </main>
+</div>
+</body>
+</html>
