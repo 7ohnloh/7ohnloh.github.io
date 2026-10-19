@@ -43,3 +43,28 @@
 })();
 
 document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
+
+// Floating avatar: greets after a moment, hides while About is on screen.
+(function () {
+  var buddy = document.getElementById('buddy');
+  if (!buddy) return;
+  var bubble = document.getElementById('buddy-bubble');
+  var close = document.getElementById('buddy-close');
+  var avatar = buddy.querySelector('.buddy-avatar');
+  var KEY = 'buddy-dismissed';
+  function dismissed() { try { return localStorage.getItem(KEY) === '1'; } catch (e) { return false; } }
+  function dismiss() {
+    bubble.hidden = true;
+    try { localStorage.setItem(KEY, '1'); } catch (e) {}
+  }
+  if (!dismissed()) setTimeout(function () { bubble.hidden = false; }, 2500);
+  close.addEventListener('click', dismiss);
+  avatar.addEventListener('click', dismiss);
+
+  var about = document.getElementById('about');
+  if (about && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      buddy.classList.toggle('is-away', entries[0].isIntersecting);
+    }, { threshold: 0.2 }).observe(about);
+  }
+})();
