@@ -183,7 +183,7 @@ p { margin: 0; }
 .about-main { display: flex; flex-direction: column; gap: 14px; max-width: 58ch; min-width: 0; }
 .about-lead { font-family: var(--font-display); font-size: var(--step-3); font-weight: 600; line-height: 1.08; letter-spacing: -0.02em; text-wrap: balance; margin-bottom: 4px; }
 .about-lead em { font-style: normal; color: var(--sage); }
-.portrait { width: clamp(150px, 18vw, 210px); height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); border: 1px solid var(--line); background: var(--sage-wash); }
+.portrait { width: clamp(140px, 15vw, 180px); height: auto; aspect-ratio: 1 / 1; object-fit: cover; object-position: 55% 22%; border-radius: 50%; border: 3px solid var(--sage-wash); box-shadow: 0 0 0 1px var(--line); background: var(--sage-wash); }
 .snapshot { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 32px; margin: 32px 0 0; padding-top: 24px; border-top: 1px solid var(--line); }
 .snapshot > div { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .snapshot dt { font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin-bottom: 4px; }
@@ -302,7 +302,7 @@ button.copy:hover { background: var(--sage); color: var(--paper); }
   .rail { position: static; }
   .toc { display: none; }
   .about { grid-template-columns: minmax(0, 1fr); }
-  .portrait { order: -1; width: 150px; }
+  .portrait { order: -1; width: 120px; }
   .pal { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 520px) {
