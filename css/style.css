@@ -164,6 +164,7 @@ p { margin: 0; }
 .about { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 32px; }
 .about-text { display: grid; gap: 16px; max-width: 60ch; }
 .facts { display: grid; gap: 16px; align-content: start; }
+.portrait { width: 100%; max-width: 280px; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); border: 1px solid var(--line); background: var(--sage-wash); }
 .facts h3 { font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); font-weight: 400; margin-bottom: 6px; }
 .facts ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; font-size: var(--step--1); }
 
