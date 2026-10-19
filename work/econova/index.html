@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Econova · John Loh</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<meta name="description" content="Econova case study: a rotating hydroponic planter with computer vision, designed for an older couple's new balcony.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600&family=JetBrains+Mono:wght@400;500&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<div class="shell">
+
+  <aside class="rail" aria-label="Project facts">
+    <a class="back" href="../../index.html#work">← All work</a>
+    <div class="project-meta"><span class="chip">Client</span><span class="mono">Jan – Apr 2025</span></div>
+    <h1 class="cs-title">Econova</h1>
+    <p class="cs-summary">A rotating planter that brings every plant down to a comfortable height, and tells its owners when their vegetables are ready to harvest.</p>
+    <dl class="spec">
+      <dt>Client</dt><dd>Ron and Jen Kaufman, Ron Kaufman Pte Ltd</dd>
+      <dt>My role</dt><dd>Client research, 3D printing and fabrication</dd>
+      <dt>Team</dt><dd>5 students</dd>
+      <dt>Timeline</dt><dd>Jan – Apr 2025</dd>
+      <dt>Course</dt><dd>60.003 Product Design Studio, SUTD</dd>
+      <dt>Made with</dt><dd>3D printing, laser-cut acrylic, Raspberry Pi, ESP32, computer vision</dd>
+    </dl>
+    <div class="links">
+      <a href="https://issuu.com/reinatsr/docs/finalreportpds">Full report</a>
+    </div>
+  </aside>
+
+  <main class="cs-body">
+
+    <figure class="shot">
+      <div class="cover cover--render" style="aspect-ratio:16/11"><img src="../../images/econova/hero-render.jpg" alt="Render of Econova: a dark blue Ferris wheel frame with flower-shaped spokes holding eight round steel planters of greens"></div>
+      <figcaption>The final design. Six planters turn on the wheel, so each one can come down to the user.</figcaption>
+    </figure>
+
+    <section class="cs-section" aria-labelledby="client">
+      <p class="eyebrow">The client</p>
+      <h2 id="client">A garden for a couple who travel</h2>
+      <p>Ron and Jen were moving into a new home with a small balcony. Jen loves growing edible plants and wanted to share the harvest with neighbours. Ron travels often, and they both wanted something that would look after itself while they were away.</p>
+      <p>We got to know them over three sessions. In the first, they told us about their lifestyle. In the second, Ron invited us to a design charrette for the new home, where the architects and environmental team shared their 3D model, floor plans and water estimates. In the third, we visited their current home to see how they live and garden, and to get feedback on our early concepts. We also visited UrbanGreenDot, a local indoor hydroponics business, to learn how commercial growers set up their systems.</p>
+      <p class="hmw">How might we design an integrated planting system that is user-friendly and low-maintenance?</p>
+      <div class="notes">
+        <div class="note"><span class="tag">Harvest timing</span><p>With so much travel, it's hard to know when crops are ready, so harvests get missed or spoil.</p></div>
+        <div class="note"><span class="tag">Easy on the body</span><p>Plant care shouldn't mean bending, stretching or reaching, whatever your age or mobility.</p></div>
+        <div class="note"><span class="tag">Low maintenance</span><p>The garden should keep growing with very little effort while they're away.</p></div>
+      </div>
+    </section>
+
+    <section class="cs-section" aria-labelledby="iterations">
+      <p class="eyebrow">Process</p>
+      <h2 id="iterations">From a flat plot to a Ferris wheel</h2>
+      <p>Our first idea was a 2 m × 1 m soil bed with a camera and a motorised cover. It was bulky, heavy and couldn't grow more plants without taking more floor space. A vertical system could, but tall planters bring back the reaching problem. A Ferris wheel solved both: it stacks planters vertically, and rotates so each one comes down to the user.</p>
+      <div class="trio">
+        <figure><img src="../../images/econova/iteration-1.jpg" alt="Iteration 1 render: a white Ferris wheel with boxy planters on an A-frame stand" loading="lazy"><figcaption><strong>Iteration 1</strong>Close to a real Ferris wheel. It worked, but had no identity of its own.</figcaption></figure>
+        <figure><img src="../../images/econova/iteration-2.jpg" alt="Iteration 2 render: a dense rack of long trough planters" loading="lazy"><figcaption><strong>Iteration 2</strong>More planting space, but hard to reach and too heavy-looking for a modern home.</figcaption></figure>
+        <figure><img src="../../images/econova/iteration-3.jpg" alt="Iteration 3 render: a rounded metal wheel with circular planters" loading="lazy"><figcaption><strong>Iteration 3</strong>Softer and more modern, but drainage and harvesting were still awkward.</figcaption></figure>
+      </div>
+      <p>Soil turned out to be the real problem: it made the wheel too heavy to turn. We switched to hydroponics using the Kratky method, which needs no pump or electricity. Each planter holds enough nutrient water to grow its plants all the way to harvest. The lighter, stacked system also gave about 40% more yield than the flat soil plot.</p>
+      <figure class="shot">
+        <img src="../../images/econova/soil-vs-hydroponics.jpg" alt="Illustration comparing flat soil plots with stacked round hydroponic planters for spring onion, lettuce, spinach and basil, labelled 40% increase in yield" loading="lazy">
+        <figcaption>Flat soil plots against stacked hydroponic planters.</figcaption>
+      </figure>
+      <p>We chose six edible plants that fit the planters and the climate and are ready within 30 days: mint, Thai basil, bok choy, kang kong, spring onion and lettuce. Bell peppers and carrots didn't make the list, because they need climbing space and deeper soil.</p>
+    </section>
+
+    <section class="cs-section" aria-labelledby="design">
+      <p class="eyebrow">Final design</p>
+      <h2 id="design">Every plant within reach</h2>
+      <ul>
+        <li>A 2.5 m frame with flower-shaped spokes, inspired by the Falkirk Wheel and car rims</li>
+        <li>The wheel turns 180° on its own twice a day to share out the sunlight, and can be turned by hand at harvest time</li>
+        <li>Each 63 cm planter has six removable "pizza slice" covers holding 3 plants each, 18 per planter</li>
+        <li>A rotating rim lets you turn the planter itself, so you never reach across it</li>
+        <li>Grow lights along the frame top up natural light to the 12 to 16 hours plants need</li>
+      </ul>
+    </section>
+
+    <section class="cs-section" aria-labelledby="smart">
+      <p class="eyebrow">Smart monitoring</p>
+      <h2 id="smart">It tells you when to harvest</h2>
+      <p>A camera on a Raspberry Pi watches the plants, and a computer vision model labels them as still growing or ready to harvest. An ESP32 with a water level sensor flags when a planter runs low. Both feed a concept app, so Ron and Jen could check on the garden while travelling.</p>
+      <figure class="shot">
+        <img src="../../images/econova/cv-growing-vs-harvest.jpg" alt="Two live camera views from the prototype: young lettuce labelled Growing and full lettuce labelled Harvest, each with a confidence bar" loading="lazy">
+        <figcaption>The model running live on the Raspberry Pi: young lettuce reads "Growing", a full head reads "Harvest".</figcaption>
+      </figure>
+      <p>The team trained the model on lettuce images from Roboflow, converted it to TensorFlow Lite so it could run on the Pi itself, and showed the live feed with its predictions on a small Flask web page. UrbanGreenDot gave us lettuce at both stages to demonstrate it.</p>
+    </section>
+
+    <section class="cs-section" aria-labelledby="fabrication">
+      <p class="eyebrow">My part · prototyping and fabrication</p>
+      <h2 id="fabrication">Building it on a $1,000 budget</h2>
+      <p>At full size, Econova would stand 2.5 m tall and hold up to 400 kg of water, far beyond our budget and what 3D-printed parts could carry. So we built two prototypes: a 1:5 model of the whole system and a full-size single planter.</p>
+      <figure class="shot">
+        <img src="../../images/econova/prototype-1to5.jpg" alt="The 1:5 scale model: a dark 3D-printed Ferris wheel with planters of greens and blue string lights, beside a small human figure for scale" loading="lazy">
+        <figcaption>The 1:5 model. A small motor turns the wheel by friction, and string lights stand in for grow lights.</figcaption>
+      </figure>
+      <ul>
+        <li>The 1:5 model's parts were printed to tolerances tight enough to slot together without glue</li>
+        <li>The full-size rim was too big for our printer, so it was printed in 12 pieces. Glue held them in place, a soldering iron fused the joints, and heat-shrink tape sealed them, enough to carry about 2 kg of covers and plants.</li>
+        <li>The six cover slices were laser-cut from acrylic</li>
+        <li>PLA turned out to be porous. Silicone gel, paint and silicone spray all leaked, and a thin plastic liner finally made the planter watertight.</li>
+      </ul>
+      <figure class="shot">
+        <img src="../../images/econova/planter-covers-1to1.jpg" alt="The full-size planter from above: six acrylic cover slices with planting holes, held by a grey 3D-printed rim with gold hooks" loading="lazy">
+        <figcaption>The full-size planter: a 3D-printed rim with laser-cut acrylic covers.</figcaption>
+      </figure>
+      <h3 class="eyebrow">What I did</h3>
+      <ul class="mine">
+        <li>Took part in the client sessions, the design charrette and the home visit that shaped our brief</li>
+        <li>3D printed and fabricated the prototypes, working through the rim joints and the waterproofing</li>
+      </ul>
+    </section>
+
+    <section class="cs-section" aria-labelledby="learned">
+      <p class="eyebrow">What I learned</p>
+      <h2 id="learned">Agree on the scope early, then build fast</h2>
+      <p>Talking with Ron and Jen early and often kept our scope tied to their home and lifestyle. Building early showed us the real problems, like a wheel too heavy to turn and a planter that leaked, which a render would never have shown us. And presenting the work at our booth taught me that explaining why something matters is as important as building it.</p>
+      <p class="mono" style="color:var(--ink-soft)">Team: Valerie Lim, Pritikaa Prabhu, John Loh, Reina Tay, Felix Teo. Mentors: Prof. Michael Reeves, Wei Lek, Hunn Wai.</p>
+    </section>
+
+    <a class="next" href="../pour/index.html">
+      <span class="eyebrow">Next project</span>
+      <span class="cs-title">POUR →</span>
+    </a>
+  </main>
+</div>
+</body>
+</html>
