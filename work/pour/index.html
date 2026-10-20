@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600&family=JetBrains+Mono:wght@400;500&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
-<link rel="stylesheet" href="../../css/style.css?v=20261020b">
+<link rel="stylesheet" href="../../css/style.css?v=20261020c">
 </head>
 <body>
 <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch theme"><svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg></button>
@@ -100,6 +100,35 @@
         <img src="../../images/pour/how-it-works-4-5.webp" alt="Steps 4 and 5: an issue explaining a 3.1 to 1 contrast failure with a suggested token fix, and dark annotation cards with notes for developers" loading="lazy">
         <figcaption>4 Review each issue with why it matters and a fix using the design system's own tokens · 5 Turn it into an annotation on the layer.</figcaption>
       </figure>
+      <div class="contrast-demo" data-contrast>
+        <div class="cd-head">
+          <p class="eyebrow">Try it: POUR's first check, live</p>
+          <p class="cd-intro">Pick a text colour and a background. This is the WCAG contrast check POUR runs on every text layer.</p>
+        </div>
+        <div class="cd-body">
+          <div class="cd-preview" aria-hidden="true">
+            <span class="cd-button">Apply for permit</span>
+            <span class="cd-small">Your application has been saved.</span>
+          </div>
+          <div class="cd-controls">
+            <label class="cd-field" for="cd-fg"><input type="color" id="cd-fg" value="#ffffff"><span>Text <code id="cd-fg-hex">#FFFFFF</code></span></label>
+            <label class="cd-field" for="cd-bg"><input type="color" id="cd-bg" value="#5596d2"><span>Background <code id="cd-bg-hex">#5596D2</code></span></label>
+            <div class="cd-presets">
+              <button type="button" data-fg="#ffffff" data-bg="#5596d2">Failing button</button>
+              <button type="button" data-fg="#ffffff" data-bg="#145c46">Fixed with a token</button>
+              <button type="button" class="cd-swap">Swap colours</button>
+            </div>
+          </div>
+        </div>
+        <div class="cd-result" aria-live="polite">
+          <p class="cd-ratio"><span id="cd-ratio">3.2</span><small>:1 contrast</small></p>
+          <ul class="cd-checks">
+            <li data-min="4.5">Normal text · AA <b>4.5:1</b></li>
+            <li data-min="3">Large text · AA <b>3:1</b></li>
+            <li data-min="7">Normal text · AAA <b>7:1</b></li>
+          </ul>
+        </div>
+      </div>
       <p>The annotations are written for the person who builds the screen, so the intent survives handoff:</p>
       <div class="notes">
         <div class="note"><span class="tag">Screen reader · WCAG 1.3.1</span><p>Heading isn't marked as a heading. Use an <code>&lt;h1&gt;</code>, not a styled <code>&lt;div&gt;</code>, and keep heading levels in order.</p></div>
@@ -148,7 +177,7 @@
     </a>
   </main>
 </div>
-<script src="../../js/theme.js?v=20261020b"></script>
-<script src="../../js/case.js?v=20261020b"></script>
+<script src="../../js/theme.js?v=20261020c"></script>
+<script src="../../js/case.js?v=20261020c"></script>
 </body>
 </html>
