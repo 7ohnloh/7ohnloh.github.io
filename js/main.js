@@ -44,28 +44,16 @@
 
 document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
 
-// Floating avatar: greets once, links to About, hides while About is on screen.
+// Floating avatar: greeting stays up until closed, avatar links to About, hides while About is on screen.
 (function () {
   var buddy = document.getElementById('buddy');
   if (!buddy) return;
   var bubble = document.getElementById('buddy-bubble');
-  var GREETED = 'buddy-greeted';
-  var greeted = false;
-  try { greeted = localStorage.getItem(GREETED) === '1'; } catch (e) {}
-  if (!greeted) setTimeout(function () {
-    if (buddy.classList.contains('is-away')) return;
-    bubble.hidden = false;
-    setTimeout(function () { bubble.hidden = true; }, 7000);
-    try { localStorage.setItem(GREETED, '1'); } catch (e) {}
-  }, 2500);
   document.getElementById('buddy-close').addEventListener('click', function () { bubble.hidden = true; });
-  document.getElementById('buddy-avatar').addEventListener('click', function () { bubble.hidden = true; });
 
   var about = document.getElementById('about');
   if (about && 'IntersectionObserver' in window) new IntersectionObserver(function (entries) {
-    var inAbout = entries[0].isIntersecting;
-    buddy.classList.toggle('is-away', inAbout);
-    if (inAbout) bubble.hidden = true;
+    buddy.classList.toggle('is-away', entries[0].isIntersecting);
   }, { threshold: 0.2 }).observe(about);
 })();
 
