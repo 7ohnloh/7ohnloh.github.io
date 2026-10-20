@@ -405,6 +405,37 @@ body { transition: background-color 0.25s ease, color 0.25s ease; }
 .cd-checks b { font-family: var(--font-mono); font-weight: 400; color: var(--ink-soft); }
 @media (max-width: 640px) { .cd-body { grid-template-columns: minmax(0, 1fr); } }
 
+/* ---------- NomQuest A/B chart ---------- */
+.ab-chart { margin: 0; display: grid; gap: 16px; padding: clamp(18px, 3vw, 28px); border-radius: var(--radius); border: 1px solid var(--line); background: var(--panel); }
+.ab-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+.ab-toggle { display: inline-flex; padding: 3px; border-radius: 999px; border: 1px solid var(--line); background: var(--paper); }
+.ab-toggle button { font: inherit; font-family: var(--font-mono); font-size: 0.75rem; padding: 6px 14px; border: 0; border-radius: 999px; background: transparent; color: var(--ink-soft); cursor: pointer; }
+.ab-toggle button[aria-pressed="true"] { background: var(--sage); color: var(--paper); }
+.ab-plot { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: clamp(6px, 1.5vw, 14px); height: 220px; align-items: end; padding-top: 22px; border-bottom: 1px solid var(--line); }
+.ab-group { display: grid; grid-template-rows: 1fr auto; height: 100%; gap: 6px; }
+.ab-bars { display: flex; align-items: flex-end; justify-content: center; gap: 3px; height: 100%; }
+.ab-bar { position: relative; flex: 1; max-width: 26px; height: var(--h); min-height: 2px; border-radius: 4px 4px 0 0; transition: height 0.5s cubic-bezier(0.2, 0.7, 0.3, 1); }
+.ab-bar--a { background: var(--bar-muted); }
+.ab-bar--b { background: var(--neon); box-shadow: 0 0 10px color-mix(in srgb, var(--neon) 35%, transparent); }
+.ab-bar em { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); margin-bottom: 3px; font-style: normal; font-family: var(--font-mono); font-size: 0.65rem; color: var(--ink-soft); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.ab-x { text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-soft); padding-bottom: 6px; }
+.ab-key { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+.ab-key--a { background: var(--bar-muted); }
+.ab-key--b { background: var(--neon); }
+.ab-summary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.ab-summary p { margin: 4px 0 0; font-size: var(--step--1); color: var(--ink-soft); }
+.ab-summary b { font-family: var(--font-display); font-size: var(--step-2); font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+.ab-summary span:not(.eyebrow) { margin: 0 4px; }
+.ab-caption { font-size: var(--step--1); color: var(--ink-soft); }
+@media (max-width: 520px) { .ab-bar em { display: none; } .ab-plot { height: 180px; } }
+@media (prefers-reduced-motion: reduce) { .ab-bar { transition: none; } }
+
+/* ---------- chart hover values ---------- */
+.bar[data-tip] { position: relative; cursor: default; outline: none; }
+.bar[data-tip]:hover, .bar[data-tip]:focus-visible { filter: brightness(1.15); box-shadow: 0 0 0 2px var(--neon); }
+.bar[data-tip]::after { content: attr(data-tip); position: absolute; left: var(--tip-x, 0); bottom: calc(100% + 8px); z-index: 5; width: max-content; max-width: min(260px, 70vw); white-space: normal; line-height: 1.4; padding: 6px 10px; border-radius: 8px; background: var(--ink); color: var(--paper); font-family: var(--font-mono); font-size: 0.72rem; opacity: 0; transform: translateY(4px); pointer-events: none; transition: opacity 0.15s ease, transform 0.15s ease; }
+.bar[data-tip]:hover::after, .bar[data-tip]:focus-visible::after { opacity: 1; transform: none; }
+
 /* ---------- narrow screens ---------- */
 @media (max-width: 880px) {
   .shell { grid-template-columns: minmax(0, 1fr); }

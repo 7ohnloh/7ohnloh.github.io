@@ -90,3 +90,37 @@ document.querySelectorAll('[data-compare]').forEach(function (fig) {
   box.querySelector('.cd-swap').addEventListener('click', function () { var t = fg.value; fg.value = bg.value; bg.value = t; update(); });
   update();
 })();
+
+// NomQuest A/B chart: switch between satisfaction and ease.
+(function () {
+  var fig = document.querySelector('[data-ab]');
+  if (!fig) return;
+  var data = JSON.parse(fig.getAttribute('data-ab'));
+  var nA = +fig.getAttribute('data-na'), nB = +fig.getAttribute('data-nb'), MAX = 40;
+  var captions = {
+    sat: 'Satisfaction: both groups gave high scores equally often, but a quarter of Version A gave a low score, against one in eighteen for Version B.',
+    ease: 'Ease: Version B had more high scores, and twice the share of perfect 7s (28% against 14%).'
+  };
+  function pct(c, n) { return Math.round(100 * c / n); }
+  function sum(arr, from, to) { return arr.slice(from, to).reduce(function (a, b) { return a + b; }, 0); }
+  function show(metric) {
+    var d = data[metric];
+    fig.querySelectorAll('.ab-bar').forEach(function (bar) {
+      var i = +bar.getAttribute('data-i'), v = bar.getAttribute('data-v');
+      var p = pct(d[v][i], v === 'a' ? nA : nB);
+      bar.style.setProperty('--h', (Math.min(p, MAX) / MAX * 100).toFixed(1) + '%');
+      bar.querySelector('em').textContent = p + '%';
+      bar.setAttribute('title', (v === 'a' ? 'Version A' : 'Version B') + ', score ' + (i + 1) + ': ' + p + '% (' + d[v][i] + ' people)');
+    });
+    fig.querySelector('.ab-low-a').textContent = pct(sum(d.a, 0, 3), nA) + '%';
+    fig.querySelector('.ab-low-b').textContent = pct(sum(d.b, 0, 3), nB) + '%';
+    fig.querySelector('.ab-high-a').textContent = pct(sum(d.a, 4, 7), nA) + '%';
+    fig.querySelector('.ab-high-b').textContent = pct(sum(d.b, 4, 7), nB) + '%';
+    fig.querySelector('.ab-caption').textContent = captions[metric];
+    fig.querySelectorAll('.ab-toggle button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-metric') === metric)); });
+  }
+  fig.querySelectorAll('.ab-toggle button').forEach(function (b) {
+    b.addEventListener('click', function () { show(b.getAttribute('data-metric')); });
+  });
+  show('sat');
+})();

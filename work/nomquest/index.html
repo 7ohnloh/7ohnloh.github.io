@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600&family=JetBrains+Mono:wght@400;500&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
-<link rel="stylesheet" href="../../css/style.css?v=20261020c">
+<link rel="stylesheet" href="../../css/style.css?v=20261020d">
 </head>
 <body>
 <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch theme"><svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg></button>
@@ -140,12 +140,74 @@
         <img src="../../images/nomquest/flow-version-a-suggested-goals.jpg" alt="Figma prototype flow for version A, with suggested goals shown below the text box" loading="lazy">
         <figcaption>Version A's prototype flow in Figma. Version B was the same without the suggestions.</figcaption>
       </figure>
-      <p>We built both versions as Maze tests and sent them to working adults through our own networks, who passed them on. 54 people took part, 36 in A and 18 in B, so we compared percentages instead of raw counts. Each person added a goal, then rated satisfaction and ease from 1 to 7.</p>
-      <figure class="shot">
-        <img src="../../images/nomquest/ab-test-results.jpg" alt="Version A and B screens beside bar charts of satisfaction and intuitiveness scores from 1 to 7, with version B scoring higher in the top range" loading="lazy">
-        <figcaption>Version B, with no suggestions, had a larger share of 5 to 7 scores for both satisfaction and ease.</figcaption>
+      <p>We built both versions as Maze tests and sent them to working adults through our own networks, who passed them on. 54 people took part, 36 in A and 18 in B, so we compared percentages instead of raw counts. Each person added a goal, then rated satisfaction and ease from 1 to 7. Switch between the two measures below.</p>
+      <figure class="ab-chart" data-ab='{"sat": {"a": [1, 4, 4, 1, 12, 6, 8], "b": [0, 0, 1, 4, 7, 3, 3]}, "ease": {"a": [1, 1, 7, 7, 9, 6, 5], "b": [0, 2, 3, 2, 5, 1, 5]}}' data-na="36" data-nb="18">
+        <div class="ab-head">
+          <p class="chart-title">Share of each group giving each score · 1 = low, 7 = high</p>
+          <div class="ab-toggle" role="group" aria-label="Choose a measure">
+            <button type="button" data-metric="sat" aria-pressed="true">Satisfaction</button>
+            <button type="button" data-metric="ease" aria-pressed="false">Ease</button>
+          </div>
+        </div>
+        <div class="ab-plot" role="img" aria-label="Score distribution for Version A and Version B">
+            <div class="ab-group">
+              <div class="ab-bars">
+                <span class="ab-bar ab-bar--a" style="--h:7.5%" data-i="0" data-v="a"><em>3%</em></span>
+                <span class="ab-bar ab-bar--b" style="--h:0.0%" data-i="0" data-v="b"><em>0%</em></span>
+              </div>
+              <span class="ab-x">1</span>
+            </div>
+            <div class="ab-group">
+              <div class="ab-bars">
+                <span class="ab-bar ab-bar--a" style="--h:27.5%" data-i="1" data-v="a"><em>11%</em></span>
+                <span class="ab-bar ab-bar--b" style="--h:0.0%" data-i="1" data-v="b"><em>0%</em></span>
+              </div>
+              <span class="ab-x">2</span>
+            </div>
+            <div class="ab-group">
+              <div class="ab-bars">
+                <span class="ab-bar ab-bar--a" style="--h:27.5%" data-i="2" data-v="a"><em>11%</em></span>
+                <span class="ab-bar ab-bar--b" style="--h:15.0%" data-i="2" data-v="b"><em>6%</em></span>
+              </div>
+              <span class="ab-x">3</span>
+            </div>
+            <div class="ab-group">
+              <div class="ab-bars">
+                <span class="ab-bar ab-bar--a" style="--h:7.5%" data-i="3" data-v="a"><em>3%</em></span>
+                <span class="ab-bar ab-bar--b" style="--h:55.0%" data-i="3" data-v="b"><em>22%</em></span>
+              </div>
+              <span class="ab-x">4</span>
+            </div>
+            <div class="ab-group">
+              <div class="ab-bars">
+                <span class="ab-bar ab-bar--a" style="--h:82.5%" data-i="4" data-v="a"><em>33%</em></span>
+                <span class="ab-bar ab-bar--b" style="--h:97.5%" data-i="4" data-v="b"><em>39%</em></span>
+              </div>
+              <span class="ab-x">5</span>
+            </div>
+            <div class="ab-group">
+              <div class="ab-bars">
+                <span class="ab-bar ab-bar--a" style="--h:42.5%" data-i="5" data-v="a"><em>17%</em></span>
+                <span class="ab-bar ab-bar--b" style="--h:42.5%" data-i="5" data-v="b"><em>17%</em></span>
+              </div>
+              <span class="ab-x">6</span>
+            </div>
+            <div class="ab-group">
+              <div class="ab-bars">
+                <span class="ab-bar ab-bar--a" style="--h:55.0%" data-i="6" data-v="a"><em>22%</em></span>
+                <span class="ab-bar ab-bar--b" style="--h:42.5%" data-i="6" data-v="b"><em>17%</em></span>
+              </div>
+              <span class="ab-x">7</span>
+            </div>
+        </div>
+        <div class="legend"><span><i class="ab-key ab-key--a"></i>Version A · suggested goals (36 people)</span><span><i class="ab-key ab-key--b"></i>Version B · write your own (18 people)</span></div>
+        <div class="ab-summary">
+          <div><span class="eyebrow">Low scores, 1–3</span><p><b class="ab-low-a">25%</b> A <span>vs</span> <b class="ab-low-b">6%</b> B</p></div>
+          <div><span class="eyebrow">High scores, 5–7</span><p><b class="ab-high-a">72%</b> A <span>vs</span> <b class="ab-high-b">72%</b> B</p></div>
+        </div>
+        <figcaption class="ab-caption">Satisfaction: both groups gave high scores equally often, but a quarter of Version A gave a low score, against one in eighteen for Version B.</figcaption>
       </figure>
-      <p>The heatmaps helped explain why. Tapping "Add goal" opened the text box first, and the suggestions sat further down, so most people in Version A never noticed them. They typed their own goal, and found that satisfying.</p>
+      <p>So suggestions didn't make people happier. They made more people unhappy, and writing your own goal felt at least as easy. With groups this small, it's a strong signal rather than proof. The heatmaps helped explain why: tapping "Add goal" opened the text box first and the suggestions sat further down, so many people in Version A never noticed them. Several also said they couldn't find how to write their own.</p>
       <figure class="shot">
         <img src="../../images/nomquest/heatmaps.jpg" alt="Five click heatmaps showing misclicks on the first screen, confident taps on edit goals, and taps concentrated on the text box rather than the suggestions" loading="lazy">
         <figcaption>Maze heatmaps from the task.</figcaption>
@@ -166,7 +228,7 @@
     </a>
   </main>
 </div>
-<script src="../../js/theme.js?v=20261020c"></script>
-<script src="../../js/case.js?v=20261020c"></script>
+<script src="../../js/theme.js?v=20261020d"></script>
+<script src="../../js/case.js?v=20261020d"></script>
 </body>
 </html>
