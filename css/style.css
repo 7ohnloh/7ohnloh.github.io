@@ -179,6 +179,13 @@ p { margin: 0; }
 .quote blockquote { margin: 0; font-family: var(--font-display); font-size: var(--step-1); line-height: 1.35; font-weight: 400; }
 .quote figcaption { font-size: var(--step--1); color: var(--ink-soft); }
 .quote figcaption strong { display: block; color: var(--ink); font-weight: 600; }
+.quote-link { display: flex; text-decoration: none; color: inherit; border-radius: var(--radius); }
+.quote-link .quote { flex: 1; transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; }
+.quote-link:hover .quote, .quote-link:focus-visible .quote { border-color: var(--neon); box-shadow: 0 0 22px color-mix(in srgb, var(--neon) 18%, transparent); transform: translateY(-2px); }
+.quote-link:focus-visible { outline: 2px solid var(--neon); outline-offset: 4px; }
+.quote-more { display: block; margin-top: 10px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--sage); }
+.quote-link:hover .quote-more { text-decoration: underline; text-underline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .quote-link .quote { transition: none; } .quote-link:hover .quote { transform: none; } }
 
 /* ---------- about + contact ---------- */
 .about { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(24px, 4vw, 48px); align-items: start; }
