@@ -44,91 +44,29 @@
 
 document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
 
-// Floating avatar guide: greets once, reacts to sections, opens a shortcuts menu, hides in About.
+// Floating avatar: greets once, links to About, hides while About is on screen.
 (function () {
   var buddy = document.getElementById('buddy');
   if (!buddy) return;
   var bubble = document.getElementById('buddy-bubble');
-  var text = document.getElementById('buddy-text');
-  var close = document.getElementById('buddy-close');
-  var avatar = document.getElementById('buddy-avatar');
-  var menu = document.getElementById('buddy-menu');
-  var copy = document.getElementById('buddy-copy');
-  var quiet = false, hideTimer, lastShown = 0, shown = {};
   var GREETED = 'buddy-greeted';
-
-  function say(html, ms) {
-    if (quiet || !menu.hidden) return;
-    text.innerHTML = html;
-    bubble.hidden = false;
-    lastShown = Date.now();
-    clearTimeout(hideTimer);
-    if (ms) hideTimer = setTimeout(function () { bubble.hidden = true; }, ms);
-  }
-  function openMenu() {
-    bubble.hidden = true;
-    menu.hidden = false;
-    avatar.setAttribute('aria-expanded', 'true');
-    avatar.setAttribute('aria-label', 'Close shortcuts');
-    var first = menu.querySelector('[role="menuitem"]');
-    if (first) first.focus();
-  }
-  function closeMenu(returnFocus) {
-    if (menu.hidden) return;
-    menu.hidden = true;
-    avatar.setAttribute('aria-expanded', 'false');
-    avatar.setAttribute('aria-label', 'Open shortcuts');
-    if (returnFocus) avatar.focus();
-  }
-
   var greeted = false;
   try { greeted = localStorage.getItem(GREETED) === '1'; } catch (e) {}
   if (!greeted) setTimeout(function () {
-    say("Hi, I'm John 👋<br><span>Tap me for shortcuts</span>", 7000);
+    if (buddy.classList.contains('is-away')) return;
+    bubble.hidden = false;
+    setTimeout(function () { bubble.hidden = true; }, 7000);
     try { localStorage.setItem(GREETED, '1'); } catch (e) {}
   }, 2500);
+  document.getElementById('buddy-close').addEventListener('click', function () { bubble.hidden = true; });
+  document.getElementById('buddy-avatar').addEventListener('click', function () { bubble.hidden = true; });
 
-  close.addEventListener('click', function () { bubble.hidden = true; quiet = true; });
-  avatar.addEventListener('click', function () { menu.hidden ? openMenu() : closeMenu(false); });
-  menu.addEventListener('click', function (e) {
-    var item = e.target.closest('a[role="menuitem"]');
-    if (item) closeMenu(false);
-  });
-  copy.addEventListener('click', function () {
-    var email = 'johnloh1010@gmail.com';
-    var done = function () { copy.textContent = 'Copied ✓'; setTimeout(function () { copy.textContent = 'Copy my email'; }, 1800); };
-    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(email).then(done, function () { copy.textContent = email; });
-    else copy.textContent = email;
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeMenu(true);
-    if (menu.hidden || (e.key !== 'ArrowDown' && e.key !== 'ArrowUp')) return;
-    var items = Array.prototype.slice.call(menu.querySelectorAll('[role="menuitem"]'));
-    var i = items.indexOf(document.activeElement);
-    e.preventDefault();
-    items[(i + (e.key === 'ArrowDown' ? 1 : items.length - 1)) % items.length].focus();
-  });
-  document.addEventListener('click', function (e) { if (!buddy.contains(e.target)) closeMenu(false); });
-
-  if ('IntersectionObserver' in window) {
-    var reactions = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        var el = entry.target;
-        if (!entry.isIntersecting || shown[el.dataset.buddyId]) return;
-        if (Date.now() - lastShown < 5000 && !bubble.hidden) return;
-        shown[el.dataset.buddyId] = true;
-        say(el.getAttribute('data-buddy'), 4500);
-      });
-    }, { threshold: 0.55 });
-    document.querySelectorAll('[data-buddy]').forEach(function (el, i) { el.dataset.buddyId = 'b' + i; reactions.observe(el); });
-
-    var about = document.getElementById('about');
-    if (about) new IntersectionObserver(function (entries) {
-      var inAbout = entries[0].isIntersecting;
-      buddy.classList.toggle('is-away', inAbout);
-      if (inAbout) { closeMenu(false); bubble.hidden = true; }
-    }, { threshold: 0.2 }).observe(about);
-  }
+  var about = document.getElementById('about');
+  if (about && 'IntersectionObserver' in window) new IntersectionObserver(function (entries) {
+    var inAbout = entries[0].isIntersecting;
+    buddy.classList.toggle('is-away', inAbout);
+    if (inAbout) bubble.hidden = true;
+  }, { threshold: 0.2 }).observe(about);
 })();
 
 // Headline: cycle the last word.

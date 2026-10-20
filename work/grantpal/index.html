@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600&family=JetBrains+Mono:wght@400;500&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
-<link rel="stylesheet" href="../../css/style.css?v=20261021b">
+<link rel="stylesheet" href="../../css/style.css?v=20261022b">
 </head>
 <body>
 <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch theme"><svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg></button>
@@ -100,6 +100,42 @@
           </div>
           <figure class="shot"><img src="../../images/grantpal/checkerpal.jpg" alt="CheckerPal three-step flow: grant summary, project summary, eligibility match, with a grant URL being summarized" loading="lazy"></figure>
         </div>
+        <div class="demo" data-checker>
+          <div class="demo-head">
+            <p class="eyebrow">Try it: CheckerPal</p>
+            <span class="chip chip--plain">Sample data</span>
+          </div>
+          <p class="demo-intro">Pick a project and check it against the grant. The real CheckerPal reads the funder's document with the OpenAI API. Here the grant, the projects and the results are made up, so you can see how it works.</p>
+          <div class="ck-body">
+            <div class="ck-panel">
+              <p class="eyebrow">Grant summary</p>
+              <h4>Community Bonds Fund</h4>
+              <p class="ck-sub">Up to $20,000 for projects that build understanding across cultures and faiths.</p>
+            </div>
+            <div class="ck-panel">
+              <p class="eyebrow">Project</p>
+              <div class="seg" role="group" aria-label="Choose a project">
+                <button type="button" data-project="cards" aria-pressed="true">Card game</button>
+                <button type="button" data-project="visits" aria-pressed="false">Virtual visits</button>
+              </div>
+              <p class="ck-sub" id="ck-project"></p>
+            </div>
+          </div>
+          <ol class="ck-reqs" aria-live="polite">
+            <li><span class="ck-tag" aria-hidden="true"></span><div><b>Run by a registered charity or social enterprise in Singapore</b><p></p></div></li>
+            <li><span class="ck-tag" aria-hidden="true"></span><div><b>Builds understanding across races or faiths</b><p></p></div></li>
+            <li><span class="ck-tag" aria-hidden="true"></span><div><b>Reaches at least 500 people</b><p></p></div></li>
+            <li><span class="ck-tag" aria-hidden="true"></span><div><b>Finishes within 12 months</b><p></p></div></li>
+            <li><span class="ck-tag" aria-hidden="true"></span><div><b>Asks for $20,000 or less</b><p></p></div></li>
+          </ol>
+          <div class="ck-result">
+            <button type="button" class="button ck-run">Check eligibility</button>
+            <div class="ck-score" aria-live="polite">
+              <div class="ck-meter" aria-hidden="true"><span></span></div>
+              <p><b id="ck-pct">–</b><span id="ck-verdict">Run the check to see the match.</span></p>
+            </div>
+          </div>
+        </div>
         <div class="pal">
           <div>
             <h3>AnswerPal</h3>
@@ -111,6 +147,33 @@
             </ul>
           </div>
           <figure class="shot"><img src="../../images/grantpal/answerpal.jpg" alt="AnswerPal upload screen for the application questions document and the project information document" loading="lazy"></figure>
+        </div>
+        <div class="demo" data-answer>
+          <div class="demo-head">
+            <p class="eyebrow">Try it: AnswerPal</p>
+            <span class="chip chip--plain">Sample data</span>
+          </div>
+          <p class="demo-intro">Pick a funder question and draft an answer. Regenerate for another version, pick the one you like, then edit it. The drafts here are pre-written. The real AnswerPal writes them from the team's own project documents.</p>
+          <div class="ap-questions" role="group" aria-label="Choose a question">
+            <button type="button" data-q="0" aria-pressed="true">How will your project create lasting impact?</button>
+            <button type="button" data-q="1" aria-pressed="false">Why is your team the right one to deliver it?</button>
+          </div>
+          <div class="ap-editor">
+            <div class="ap-bar">
+              <span class="ap-source">Source: project-proposal.docx</span>
+              <div class="ap-versions" role="group" aria-label="Versions"></div>
+            </div>
+            <label class="sr-only" for="ap-text">Draft answer</label>
+            <textarea id="ap-text" rows="7" placeholder="Your draft will appear here." disabled></textarea>
+            <div class="ap-foot">
+              <span class="ap-count" id="ap-count" aria-live="polite">0 / 120 words</span>
+              <div class="ap-actions">
+                <button type="button" class="button ap-draft">Draft answer</button>
+                <button type="button" class="ap-export" disabled>Export to Word</button>
+              </div>
+            </div>
+            <p class="ap-note" id="ap-note" role="status" hidden></p>
+          </div>
         </div>
       </div>
     </section>
@@ -157,7 +220,7 @@
     </a>
   </main>
 </div>
-<script src="../../js/theme.js?v=20261021b"></script>
-<script src="../../js/case.js?v=20261021b"></script>
+<script src="../../js/theme.js?v=20261022b"></script>
+<script src="../../js/case.js?v=20261022b"></script>
 </body>
 </html>
