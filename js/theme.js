@@ -1,4 +1,4 @@
-// Light/dark switch. The page follows the device setting until the visitor picks a theme.
+// Light/dark switch. Dark is the default; a visitor who picks light keeps it.
 (function () {
   var root = document.documentElement;
   var button = document.getElementById('theme-toggle');
