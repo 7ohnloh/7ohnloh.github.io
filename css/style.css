@@ -436,6 +436,15 @@ body { transition: background-color 0.25s ease, color 0.25s ease; }
 .bar[data-tip]::after { content: attr(data-tip); position: absolute; left: var(--tip-x, 0); bottom: calc(100% + 8px); z-index: 5; width: max-content; max-width: min(260px, 70vw); white-space: normal; line-height: 1.4; padding: 6px 10px; border-radius: 8px; background: var(--ink); color: var(--paper); font-family: var(--font-mono); font-size: 0.72rem; opacity: 0; transform: translateY(4px); pointer-events: none; transition: opacity 0.15s ease, transform 0.15s ease; }
 .bar[data-tip]:hover::after, .bar[data-tip]:focus-visible::after { opacity: 1; transform: none; }
 
+/* ---------- avatar guide menu ---------- */
+button.buddy-avatar { padding: 0; cursor: pointer; font: inherit; }
+.buddy-avatar[aria-expanded="true"] { transform: scale(0.94); }
+.buddy-menu { display: grid; gap: 2px; min-width: 200px; padding: 8px; border-radius: 14px 14px 4px 14px; background: var(--panel); border: 1px solid var(--neon); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 22px color-mix(in srgb, var(--neon) 18%, transparent); animation: buddy-pop 0.25s ease; }
+.buddy-menu-title { margin: 2px 10px 6px; font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); }
+.buddy-menu a, .buddy-menu button { display: block; width: 100%; text-align: left; padding: 9px 12px; border-radius: 8px; border: 0; background: none; color: var(--ink); font: inherit; font-size: var(--step--1); text-decoration: none; cursor: pointer; }
+.buddy-menu a:hover, .buddy-menu button:hover, .buddy-menu a:focus-visible, .buddy-menu button:focus-visible { background: var(--sage-wash); color: var(--sage); outline: none; }
+@media (prefers-reduced-motion: reduce) { .buddy-menu { animation: none; } }
+
 /* ---------- narrow screens ---------- */
 @media (max-width: 880px) {
   .shell { grid-template-columns: minmax(0, 1fr); }
